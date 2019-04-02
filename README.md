@@ -30,11 +30,13 @@
 1. UI查看
     ``` sh
     gitk
-    ```
+  .  ```
+
 1.远程克隆
 ```sh
   git clone
 ````
+
 1.出现错误
  ``` sh
 *** Please tell me who you are.
