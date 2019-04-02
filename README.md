@@ -18,3 +18,16 @@
     git add xxx
     git add . #表示添加当前目录的所有文件
     ```
+
+1. 提交代码到本地
+    ``` sh
+    git commit -m "代码的提交说明" #-m 表示message（消息）
+    ```
+1. 提交代码到远程
+    ``` sh
+    git push  #提交到远程
+    ```
+1. UI查看
+    ``` sh
+    gitk
+    ```
