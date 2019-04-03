@@ -41,16 +41,16 @@ Run
   git config --global user.email "you@example.com"
   git config --global user.name "Your Name"
 
-to set your account's default identity.
-Omit --global to set the identity only in this repository.
+  to set your account's default identity.
+  Omit --global to set the identity only in this repository.
 
-fatal: unable to auto-detect email address (got 'Administrator@WRGHO-612262158.(none)')
+  fatal: unable to auto-detect email address (got 'Administrator@WRGHO-612262158.(none)')
 
 
 解决错误方法：
       git config --global user.email "自己账号的邮箱"
       git config --global user.name "自己账号名"
-  ```
+```
 
 1.冲突解决
 ```sh
