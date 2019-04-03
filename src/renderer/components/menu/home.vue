@@ -1,6 +1,6 @@
 <template>
     <Menu active-name="1" theme="light" width="auto" :open-names="['2']"
-          style="background-color:#F9FAFB;width:165px;" :style="{height:menuHeight+'px'}">
+        style="background-color:#F9FAFB;width:165px;" :style="{height:menuHeight+'px'}">
         <MenuItem name="1" :to="{name:'index'}">
             <Icon type="ios-clock-outline"/>
             最近使用
@@ -33,7 +33,7 @@
         name: "home",
         data() {
             return {
-                menuHeight: parseInt(document.documentElement.clientHeight) - 80
+                menuHeight: parseInt(document.documentElement.clientHeight) - 80,
             }
         },
         mounted() {
