@@ -47,7 +47,7 @@ Run
   fatal: unable to auto-detect email address (got 'Administrator@WRGHO-612262158.(none)')
 
 
-解决错误方法：
+————解决方法：
       git config --global user.email "自己账号的邮箱"
       git config --global user.name "自己账号名"
 ```
