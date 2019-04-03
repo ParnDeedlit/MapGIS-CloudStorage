@@ -30,12 +30,7 @@
 1. UI查看
     ``` sh
     gitk
-  .  ```
-
-1.远程克隆
-```sh
-  git clone
-````
+    ```
 
 1.出现错误
  ``` sh
@@ -51,4 +46,19 @@ Omit --global to set the identity only in this repository.
 
 fatal: unable to auto-detect email address (got 'Administrator@WRGHO-612262158.(none)')
 
+
+————解决方法：
+      git config --global user.email "自己账号的邮箱"
+      git config --global user.name "自己账号名"
   ```
+
+1.冲突解决
+```sh
+    1.本地没有保存的,首先将自己修改的文件git add .  然后提交到本地  git commit -m "xxx"
+    2.从远程拉取 git pull
+    3.查看状态 git status
+    4.解决冲突 编辑器修改
+    5. 更新  git add .
+    6.提交到本地   git  commit -m "xxx"
+    7.提交到远程   git  push
+````
