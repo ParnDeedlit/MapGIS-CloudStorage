@@ -10,6 +10,7 @@
                         <MenuItem name="2" :to="{name:'listIndex'}" style="-webkit-app-region: no-drag;">传输列表</MenuItem>
                         <MenuItem name="3" :to="{name:'shareSession'}" style="-webkit-app-region: no-drag;">好友分享</MenuItem>
                         <MenuItem name="4" :to="{name:'functionList'}" style="-webkit-app-region: no-drag;">功能宝箱</MenuItem>
+                        <MenuItem name="5" :to="{name:'otherFilm'}" style="-webkit-app-region: no-drag;">更多资源</MenuItem>
                     </div>
                     <div class="right">
                         <span @click="appSetting"><Icon type="ios-settings-outline"/></span>
@@ -95,7 +96,7 @@
 
     .layout-nav {
         -webkit-app-region: no-drag;
-        width: 400px;
+        width: 500px;
 
         float: left;
     }

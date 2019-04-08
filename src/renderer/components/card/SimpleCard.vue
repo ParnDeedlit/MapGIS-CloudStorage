@@ -1,11 +1,9 @@
 <template>
-  <Card style="width:150px">
-    <div style="text-align:center">
-      <span>
-        <img :src=getImage()>
-      </span>
-      <h3>一级标题</h3>
-      <h5>二级标题</h5>
+  <Card style="width:200px;padding-left:0px;margin-right:10px;margin-top:20px;">
+    <div style="text-align:center;  display: table-cell;vertical-align:middle;">
+        <img :src=getImage() style="vertical-align:middle;width:180px;height:200px;">
+      <h3>{{ firstTitle }}</h3>
+      <h5>{{secTitle}}</h5>
     </div>
   </Card>
 </template>
@@ -28,21 +26,33 @@ export default {
     prefix:{
         type: String,
         default: ".png"
+    },
+    title:{
+        type: String,
+        default: ""
+    },
+    secTitle:{
+        type: String,
+        default: ""
     }
   },
   data() {
     return {
-      imgData:this.img
-      /* imgData: this.img ? require(this.img) : require("../../assets/img/Default/loading.png") */
+      imgData:this.img,
+      firstTitle: this.title,
+      secTitle:this.title
     };
   },
   mounted() {
-    this.imgData = this.img ? require(this.img) :require("../../assets/img/Default/loading.png");
+    
   },
   methods: {
       getImage(){
           //console.log("data", this.path, this.name, this.prefix);
           return require('../../assets/img/FunctionPane/' + this.name + '.png') || require("../../assets/img/Default/loading.png");
+      },
+      getTitle(){
+        return this.title;
       }
   }
 };
@@ -55,4 +65,5 @@ export default {
   background-color: red;
   -webkit-user-select: none;
 }
+
 </style>

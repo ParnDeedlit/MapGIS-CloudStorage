@@ -5,6 +5,7 @@ import HomeMenu from '@/components/menu/home';
 import ListMenu from '@/components/menu/list';
 import ListShare from '@/components/menu/share';
 import ListEmpty from '@/components/menu/empty';
+import ListOther  from '@/components/menu/other'
 
 Vue.use(Router);
 
@@ -86,6 +87,15 @@ export default new Router({
                 {path: '/func/index', name: 'functionList', components: {menu: ListEmpty, main: () => import('@/view/function/index')}},
             ],
             props: { sidebar: false }
+        },
+        {
+            path: '/other',component:Main,
+            children: [
+                {path: '/other/film',name: 'otherFilm', components: {menu :ListOther,main: ()=>import('@/view/other/film')}},
+                {path: '/other/app',name: 'otherApp', components: {menu :ListOther,main: ()=>import('@/view/other/app')}},
+                {path: '/other/novel',name: 'otherNovel', components: {menu :ListOther,main: ()=>import('@/view/other/novel')}}
+            ],
+            props: { sidebar: true }
         },
         {
             path: '*', component: Main,

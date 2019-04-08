@@ -9,21 +9,22 @@
       </Col>
     </Row>
     <br>
+    <br><br>
     <Row type="flex" justify="space-around" class="code-row-bg">
-      <Col span="4" offset="2">
-        <SimpleCard :path="imgPath" :name="imgBackup"/>
+      <Col span="4" offset="1">
+        <SimpleCard :path="imgPath" :name="imgBackup" :title="titleName[0].title"  :secTitle="titleName[0].secTitle"/>
       </Col>
       <Col span="4">
-        <SimpleCard :path="imgPath" :name="imgClean"/>
+        <SimpleCard :path="imgPath" :name="imgClean"  :title="titleName[1].title"   :secTitle="titleName[1].secTitle"/>
       </Col>
       <Col span="4">
-        <SimpleCard :path="imgPath" :name="imgCable"/>
+        <SimpleCard :path="imgPath" :name="imgCable"  :title="titleName[2].title"   :secTitle="titleName[2].secTitle"/>
       </Col>
       <Col span="4">
-        <SimpleCard :path="imgPath" :name="imgLock"/>
+        <SimpleCard :path="imgPath" :name="imgLock"   :title="titleName[3].title"   :secTitle="titleName[3].secTitle"/>
       </Col>
       <Col span="4">
-        <SimpleCard :path="imgPath" :name="imgRecycle"/>
+        <SimpleCard :path="imgPath" :name="imgRecycle" :title="titleName[4].title"  :secTitle="titleName[4].secTitle"/>
       </Col>
     </Row>
   </div>
@@ -37,12 +38,33 @@ export default {
   components: { SimpleCard },
   data() {
     return {
-      imgPath: "../../assets/img/FunctionPane/",
+      imgPath: "../../assets/img/FunctionPane /",
       imgBackup: "Backup",
       imgClean: "Clean",
       imgCable: "DataCable",
       imgLock: "Lock",
-      imgRecycle: "Recycle"
+      imgRecycle: "Recycle",
+      titleName:[
+         {
+         title:'垃圾文件清理',
+          secTitle:'节省网盘空间'
+         },
+         {
+          title:'自动备份',
+          secTitle:'随时备份，告别丢失'
+         },{
+           title:'回收站',
+          secTitle:'帮你找回删回文件'
+         },
+         {
+           title:'数据线',
+          secTitle:'手机和电脑无线传输'
+         },
+         {
+           title:'锁定网盘',
+          secTitle:'防止他人偷窥数据'
+         }
+      ]
     };
   }
 };
@@ -53,6 +75,6 @@ export default {
   text-align: center;
   margin-top: 30px;
 }
-</style>
+</style> 
    
    
