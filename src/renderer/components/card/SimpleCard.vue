@@ -19,7 +19,7 @@ export default {
     },
     path:{
         type: String,
-        default: "."
+        default: "." 
     },
     name:{
         type: String,
@@ -32,16 +32,16 @@ export default {
   },
   data() {
     return {
-      imgData:this.img
-      /* imgData: this.img ? require(this.img) : require("../../assets/img/Default/loading.png") */
+      imgData: require("../../assets/img/Default/loading.png")
     };
   },
   mounted() {
-    this.imgData = this.img ? require(this.img) :require("../../assets/img/Default/loading.png");
+    //this.imgData = this.img ? require(this.img) :require("../../assets/img/Default/loading.png");
   },
   methods: {
       getImage(){
-          //console.log("data", this.path, this.name, this.prefix);
+          console.log(this.path, this.name, this.prefix);
+          //return require(this.path + this.name + '.png') || require("../../assets/img/Default/loading.png");          
           return require('../../assets/img/FunctionPane/' + this.name + '.png') || require("../../assets/img/Default/loading.png");
       }
   }
