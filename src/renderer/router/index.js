@@ -5,16 +5,22 @@ import HomeMenu from '@/components/menu/home';
 import ListMenu from '@/components/menu/list';
 import ListShare from '@/components/menu/share';
 import ListEmpty from '@/components/menu/empty';
+import login from '@/view/login/login'
 
 Vue.use(Router);
 
 export default new Router({
     routes: [
         {
-            path: '/', component: Main,
+            path: '/',
+            name: 'login',
+            component: login
+        },
+        {
+            path: '/mian', component: Main,
             children: [
                 {
-                    path: '/',
+                    path: '/index',
                     name: 'index',
                     components: {menu: HomeMenu, main: () => import('@/view/index')}
                 }

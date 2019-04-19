@@ -11,19 +11,19 @@
     <br>
     <Row type="flex" justify="space-around" class="code-row-bg">
       <Col span="4" offset="2">
-        <SimpleCard :path="imgPath" :name="imgBackup"/>
+        <SimpleCard :path="imgPath" :name="imgBackup" />
       </Col>
       <Col span="4">
-        <SimpleCard :path="imgPath" :name="imgClean"/>
+        <SimpleCard :path="imgPath" :name="imgClean" />
       </Col>
       <Col span="4">
         <SimpleCard :path="imgPath" :name="imgCable"/>
       </Col>
       <Col span="4">
-        <SimpleCard :path="imgPath" :name="imgLock"/>
+        <SimpleCard :path="imgPath" :name="imgLock" />
       </Col>
       <Col span="4">
-        <SimpleCard :path="imgPath" :name="imgRecycle"/>
+        <SimpleCard :path="imgPath" :name="imgRecycle" />
       </Col>
     </Row>
   </div>

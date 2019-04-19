@@ -1,9 +1,7 @@
 <template>
-  <Card style="width:150px">
-    <div style="text-align:center">
-      <span>
-        <img :src=getImage()>
-      </span>
+  <Card style="width:200px;padding-left:0px;margin-right:10px;margin-top:20px;">
+    <div style="text-align:center;  display: table-cell;vertical-align:middle;">
+        <img :src=getImage() style="vertical-align:middle;width:180px;height:200px;">
       <h3>一级标题</h3>
       <h5>二级标题</h5>
     </div>
@@ -55,4 +53,5 @@ export default {
   background-color: red;
   -webkit-user-select: none;
 }
+
 </style>
