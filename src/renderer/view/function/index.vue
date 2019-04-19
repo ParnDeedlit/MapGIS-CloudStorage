@@ -27,12 +27,7 @@
         <SimpleCard :path="imgPath" :name="imgCable"  :title="titleName[2].title"   :secTitle="titleName[2].secTitle"/>
       </Col>
       <Col span="4">
-        <SimpleCard :path="imgPath" :name="imgLock" />
-      </Col>
-      <Col span="4">
-        <SimpleCard :path="imgPath" :name="imgRecycle" />
-
-        <SimpleCard :path="imgPath" :name="imgLock"   :title="titleName[3].title"   :secTitle="titleName[3].secTitle"/>
+       <SimpleCard :path="imgPath" :name="imgLock"   :title="titleName[3].title"   :secTitle="titleName[3].secTitle"/>
       </Col>
       <Col span="4">
         <SimpleCard :path="imgPath" :name="imgRecycle" :title="titleName[4].title"  :secTitle="titleName[4].secTitle"/>
