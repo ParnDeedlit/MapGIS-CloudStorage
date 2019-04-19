@@ -7,8 +7,7 @@ import router from './router'
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
 Vue.use(iView);
-import Mock from './mock'
-Mock.init()
+
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.http = Vue.prototype.$http = axios

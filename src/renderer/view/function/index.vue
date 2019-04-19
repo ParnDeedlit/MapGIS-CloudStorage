@@ -16,7 +16,7 @@
       </Col>
       <Col span="4">
         <SimpleCard :path="imgPath" :name="imgClean" />
-
+      </Col>
       <Col span="4" offset="1">
         <SimpleCard :path="imgPath" :name="imgBackup" :title="titleName[0].title"  :secTitle="titleName[0].secTitle"/>
       </Col>
