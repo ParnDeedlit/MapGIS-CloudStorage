@@ -61,4 +61,7 @@ typings/
 .next
 
 # dist
-dist/
+dist/*
+
+# event
+package.json
