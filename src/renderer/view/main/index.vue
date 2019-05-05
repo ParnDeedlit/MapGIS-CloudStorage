@@ -29,6 +29,7 @@
                 <Layout style="background-color: #FFFFFF;">
                     <Content :style="{background: '#fff'}">
                         <router-view name="main"/>
+                        <!-- <router-view name="filefolder"></router-view> -->
                     </Content>
                 </Layout>
             </Layout>

@@ -11,7 +11,7 @@
       ></Table>
       <transition name="fade">
         <keep-alive>
-          <router-view></router-view>
+          <router-view name="filefolder"></router-view>
         </keep-alive>
       </transition>
     </div>
@@ -83,7 +83,7 @@ export default {
         this.getFolderInfo(res);
       });
       this.$router.replace({
-        path: `/computer/${path}`
+        path: `/local/computer/${path}`
       });
     },
     normalize(arr) {
@@ -100,7 +100,7 @@ export default {
     $route() {}
   },
   created() {
-    wmic.disk().then(disk => {
+    wmic.LogicalDisk().then(disk => {
       this.diskInfo = disk;
     });
   }

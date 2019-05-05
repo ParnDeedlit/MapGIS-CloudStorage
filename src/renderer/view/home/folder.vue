@@ -176,6 +176,7 @@
   } from '@/common/js/file'
   import wmic from 'node-wmic'
   export default {
+    name: "folder",
     computed: {
       ...mapGetters([
         'folderInfo'
@@ -199,7 +200,7 @@
     watch: {
       '$route' () {
         this.getDisk()
-        if (this.$route.name === 'folder') {
+        if (this.$route.name === 'localFolder') {
           readFolder(this.$route.params.id + '\\\\').then(res => {
             this.getFolderInfo(res)
           })
@@ -271,7 +272,7 @@
       back () {
         if (this.$route.params.id.length <= 4) {
           this.$router.replace({
-            path: '/computer'
+            path: '/local/computer'
           })
         } else {
           this.$router.back(-1)
@@ -283,7 +284,7 @@
             this.getFolderInfo(res)
           })
           this.$router.push({
-            path: `/computer/${row.path}`
+            path: `/local/computer/${row.path}`
           })
         } else {
           openFile(row.path)
@@ -319,7 +320,7 @@
         }
       },
       getDisk () {
-        wmic.disk().then(disk => {
+        wmic.LogicalDisk().then(disk => {
           disk.map((item, index) => {
             if (item.Caption[0] === this.tableData[0].path[0]) {
               this.currentDisk = Object.assign({}, item)

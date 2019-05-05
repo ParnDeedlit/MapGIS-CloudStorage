@@ -26,7 +26,7 @@ export default new Router({
             ],
             props: { sidebar: true }
         },
-        {
+/*         {
             path: '/computer',
             name: 'myfile1',
             component: myfile,
@@ -35,7 +35,7 @@ export default new Router({
               name: 'folder',
               component: folder
             }]
-          },
+        } */
         {
             path: '/home', name: '/home', component: Main,
             children: [
@@ -117,9 +117,25 @@ export default new Router({
             props: { sidebar: true }
         },
         {
-            path: '/local',component:Main,
+            path: '/local',
+            component:Main,
             children: [
-                {path: '/local/common',name: 'localCommon', components: {menu :ListLocal,main: ()=>import('@/view/home/myfile')}},
+                {
+                    path: '/local/computer',
+                    name: 'localCommon', 
+                    components: {
+                        menu :ListLocal,
+                        main: ()=>import('@/view/home/myfile')
+                    }
+                },
+                {
+                    path: '/local/computer/:id',
+                    name: 'localFolder',
+                    components:{
+                        menu :ListLocal,
+                        main: ()=>import('@/view/home/folder')
+                    }
+                },
                 {path: '/local/geo',name: 'localGeo', components: {menu :ListLocal,main: ()=>import('@/view/local/geo')}},
                 {path: '/local/other',name: 'localOther', components: {menu :ListLocal,main: ()=>import('@/view/local/other')}}
             ],
