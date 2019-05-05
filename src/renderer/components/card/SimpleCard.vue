@@ -39,17 +39,15 @@ export default {
   data() {
     return {
       imgData:this.img,
-      firstTitle: this.title,
-      secTitle:this.title
+      firstTitle: this.title
     };
   },
   mounted() {
   },
   methods: {
-      getImage(){
-          console.log(this.path, this.name, this.prefix);
-          //return require(this.path + this.name + '.png') || require("../../assets/img/Default/loading.png");          
-          return require('../../assets/img/FunctionPane/' + this.name + '.png') || require("../../assets/img/Default/loading.png");
+      getImage(){     
+          return require('../../assets/img/FunctionPane/' + this.name + '.png') 
+            || require("../../assets/img/Default/loading.png");
       },
       getTitle(){
         return this.title;

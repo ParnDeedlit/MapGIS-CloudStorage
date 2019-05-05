@@ -3,9 +3,10 @@ import Router from 'vue-router'
 import Main from '@/view/main/index'
 import HomeMenu from '@/components/menu/home';
 import ListMenu from '@/components/menu/list';
+import ListLocal  from '@/components/menu/local';
 import ListShare from '@/components/menu/share';
 import ListEmpty from '@/components/menu/empty';
-import ListOther  from '@/components/menu/other'
+import ListOther  from '@/components/menu/other';
 
 Vue.use(Router);
 
@@ -94,6 +95,15 @@ export default new Router({
                 {path: '/other/film',name: 'otherFilm', components: {menu :ListOther,main: ()=>import('@/view/other/film')}},
                 {path: '/other/app',name: 'otherApp', components: {menu :ListOther,main: ()=>import('@/view/other/app')}},
                 {path: '/other/novel',name: 'otherNovel', components: {menu :ListOther,main: ()=>import('@/view/other/novel')}}
+            ],
+            props: { sidebar: true }
+        },
+        {
+            path: '/local',component:Main,
+            children: [
+                {path: '/local/common',name: 'localCommon', components: {menu :ListLocal,main: ()=>import('@/view/local/common')}},
+                {path: '/local/geo',name: 'localGeo', components: {menu :ListLocal,main: ()=>import('@/view/local/geo')}},
+                {path: '/local/other',name: 'localOther', components: {menu :ListLocal,main: ()=>import('@/view/local/other')}}
             ],
             props: { sidebar: true }
         },
