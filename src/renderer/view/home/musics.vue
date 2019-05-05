@@ -9,7 +9,6 @@
 
 <script>
     import uploadTabBar from '@/components/tabbar/uploadTabBar.vue'
-
     export default {
         name: "musics",
         components: {uploadTabBar}

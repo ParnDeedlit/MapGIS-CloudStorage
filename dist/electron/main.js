@@ -105,7 +105,7 @@ eval("/* WEBPACK VAR INJECTION */(function(__dirname) {var resolve = __webpack_r
 /*! exports provided: name, version, description, keywords, repository, bin, main, scripts, license, __npminstall_done, _from, _resolved, default */
 /***/ (function(module) {
 
-eval("module.exports = {\"name\":\"7zip\",\"version\":\"0.0.6\",\"description\":\"7zip Windows Package via Node.js\",\"keywords\":[\"7z\",\"7zip\",\"7-zip\",\"windows\",\"install\"],\"repository\":\"git@github.com:fritx/win-7zip.git\",\"bin\":{\"7z\":\"7zip-lite/7z.exe\"},\"main\":\"index.js\",\"scripts\":{\"test\":\"mocha\"},\"license\":\"GNU LGPL\",\"__npminstall_done\":\"Wed Apr 03 2019 16:30:52 GMT+0800 (GMT+08:00)\",\"_from\":\"7zip@0.0.6\",\"_resolved\":\"http://registry.npm.taobao.org/7zip/download/7zip-0.0.6.tgz\"};\n\n//# sourceURL=webpack:///./node_modules/_7zip@0.0.6@7zip/package.json?");
+eval("module.exports = {\"name\":\"7zip\",\"version\":\"0.0.6\",\"description\":\"7zip Windows Package via Node.js\",\"keywords\":[\"7z\",\"7zip\",\"7-zip\",\"windows\",\"install\"],\"repository\":\"git@github.com:fritx/win-7zip.git\",\"bin\":{\"7z\":\"7zip-lite/7z.exe\"},\"main\":\"index.js\",\"scripts\":{\"test\":\"mocha\"},\"license\":\"GNU LGPL\",\"__npminstall_done\":\"Tue Apr 30 2019 17:40:08 GMT+0800 (GMT+08:00)\",\"_from\":\"7zip@0.0.6\",\"_resolved\":\"https://registry.npm.taobao.org/7zip/download/7zip-0.0.6.tgz\"};\n\n//# sourceURL=webpack:///./node_modules/_7zip@0.0.6@7zip/package.json?");
 
 /***/ }),
 
@@ -550,7 +550,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var elec
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! D:\\zondy\\MapGIS-CloudStorage\\src\\main\\index.dev.js */\"./src/main/index.dev.js\");\nmodule.exports = __webpack_require__(/*! D:\\zondy\\MapGIS-CloudStorage\\src\\main\\index.js */\"./src/main/index.js\");\n\n\n//# sourceURL=webpack:///multi_./src/main/index.dev.js_./src/main/index.js?");
+eval("__webpack_require__(/*! D:\\代码\\中地\\MapGIS-CloudStorage\\src\\main\\index.dev.js */\"./src/main/index.dev.js\");\nmodule.exports = __webpack_require__(/*! D:\\代码\\中地\\MapGIS-CloudStorage\\src\\main\\index.js */\"./src/main/index.js\");\n\n\n//# sourceURL=webpack:///multi_./src/main/index.dev.js_./src/main/index.js?");
 
 /***/ }),
 

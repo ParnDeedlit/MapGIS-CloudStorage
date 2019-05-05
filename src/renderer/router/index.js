@@ -5,7 +5,15 @@ import HomeMenu from '@/components/menu/home';
 import ListMenu from '@/components/menu/list';
 import ListShare from '@/components/menu/share';
 import ListEmpty from '@/components/menu/empty';
-import ListOther  from '@/components/menu/other'
+import ListOther  from '@/components/menu/other';
+import myfile from '@/view/home/myfile';
+import folder from '@/view/home/folder';
+
+// const Index = resolve => {
+//     import('@/views/index/index').then(module => {
+//       resolve(module)
+//     })
+//   }
 
 Vue.use(Router);
 
@@ -22,6 +30,16 @@ export default new Router({
             ],
             props: { sidebar: true }
         },
+        {
+            path: '/computer',
+            name: 'myfile1',
+            component: myfile,
+            children: [{
+              path: '/computer/:id',
+              name: 'folder',
+              component: folder
+            }]
+          },
         {
             path: '/home', name: '/home', component: Main,
             children: [
@@ -49,6 +67,11 @@ export default new Router({
                     path: '/home/seeds',
                     name: 'seeds',
                     components: {menu: HomeMenu, main: () => import('@/view/home/seeds')}
+                },
+                {
+                    path: '/home/myfile',
+                    name: 'myfile',
+                    components: {menu: HomeMenu, main: () => import('@/view/home/myfile')}
                 },
                 {
                     path: '/home/other',
@@ -101,6 +124,5 @@ export default new Router({
             path: '*', component: Main,
             children: [{path: '_', component: () => import('@/view/index')},],
             props: { sidebar: true }
-        }
-    ]
+        }]
 })
