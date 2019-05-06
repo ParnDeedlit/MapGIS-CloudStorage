@@ -106,7 +106,7 @@
       }
     },
     created () {
-      wmic.disk().then(disk => {
+      wmic.LogicalDisk().then(disk => {
         this.diskInfo = disk
       })
     }
