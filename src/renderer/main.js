@@ -3,11 +3,13 @@ import axios from 'axios'
 
 import App from './App'
 import router from './router'
+
+import store from './store'
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
 import VCharts from 'v-charts'
 import extend from './extend'
-import store from './store'
+
 Vue.use(iView)
 Vue.use(VCharts)
 Vue.use(extend)

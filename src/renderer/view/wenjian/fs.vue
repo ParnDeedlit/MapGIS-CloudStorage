@@ -24,7 +24,7 @@
 <script>
   import wmic from 'node-wmic'
   import { toMem } from '@/extend/filters'
-  import { readFolder } from '@/js/file'
+  import { readFolder } from '@/common/js/file'
   import { mapMutations } from 'vuex'
   export default {
     data () {

@@ -10,8 +10,8 @@
         <Input v-model="filename" placeholder="请输入新的文件名"></Input>
       </Modal>
       <!--文件目录-->
-      <div class="folder-container" style="margin-bottom: 50px; margin-top:50px;">
-        <div class="back" @click="back" >
+      <div class="folder-container" style="margin-bottom: 50px;">
+        <div class="back" @click="back">
           <Icon 
             type="ios-arrow-back" 
             size="28"
@@ -176,6 +176,7 @@
   } from '@/common/js/file'
   import wmic from 'node-wmic'
   export default {
+    name: "folder",
     computed: {
       ...mapGetters([
         'folderInfo'
@@ -199,7 +200,7 @@
     watch: {
       '$route' () {
         this.getDisk()
-        if (this.$route.name === 'folder') {
+        if (this.$route.name === 'localFolder') {
           readFolder(this.$route.params.id + '\\\\').then(res => {
             this.getFolderInfo(res)
           })
@@ -264,14 +265,14 @@
       reload () {
         if (this.$route.params.id.length > 4) {
           this.$router.replace({
-            name: 'fs'
+            name: 'index'
           })
         }
       },
       back () {
         if (this.$route.params.id.length <= 4) {
           this.$router.replace({
-            path: '/wenjian/fs'
+            path: '/local/computer'
           })
         } else {
           this.$router.back(-1)
@@ -283,7 +284,7 @@
             this.getFolderInfo(res)
           })
           this.$router.push({
-            path: `/wenjian/fs/${row.path}`
+            path: `/local/computer/${row.path}`
           })
         } else {
           openFile(row.path)
@@ -319,7 +320,7 @@
         }
       },
       getDisk () {
-        wmic.disk().then(disk => {
+        wmic.LogicalDisk().then(disk => {
           disk.map((item, index) => {
             if (item.Caption[0] === this.tableData[0].path[0]) {
               this.currentDisk = Object.assign({}, item)
@@ -426,6 +427,7 @@
       handlerFiles (row, index) {
         const MenuItem = this.$electron.remote.MenuItem
         const Menu = this.$electron.remote.Menu
+        // dialog 对话框
         const dialog = this.$electron.remote.dialog
         const menu1 = new Menu()
         let me = this
@@ -522,12 +524,12 @@
 <style lang="less" scoped>
   .folder {
     height: 100%;
-    width: 70%;
+    width: 50%;
     overflow-y: auto;
     position: fixed;
     z-index: 100;
-    top: 80px;
-    left:200px;;
+    top: 50px;
+    left: 25%;
     bottom: 0px;
     right: 0;
     .t-folder {
@@ -541,7 +543,7 @@
     height: 20px;
     line-height: 20px;
     position: absolute;
-    top: 20px;
+    top: 4px;
     z-index: 100;
   }
   .img-folder {

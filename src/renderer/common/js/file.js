@@ -1,6 +1,6 @@
 import {
   icon
-} from '@/js/icon'
+} from '@/common/js/icon'
 import {
   exec
 } from 'child_process'
