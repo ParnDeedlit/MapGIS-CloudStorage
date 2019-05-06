@@ -5,9 +5,7 @@ import HomeMenu from '@/components/menu/home';
 import ListMenu from '@/components/menu/list';
 import ListShare from '@/components/menu/share';
 import ListEmpty from '@/components/menu/empty';
-
 import login from '@/view/login/login'
-
 import ListOther  from '@/components/menu/other'
 
 
@@ -16,12 +14,12 @@ Vue.use(Router);
 export default new Router({
     routes: [
         {
-            path: '/',
+            path: '/login',
             name: 'login',
             component: login
         },
         {
-            path: '/mian', component: Main,
+            path: '/', component: Main,
             children: [
                 {
                     path: '/index',
@@ -105,6 +103,29 @@ export default new Router({
                 {path: '/other/novel',name: 'otherNovel', components: {menu :ListOther,main: ()=>import('@/view/other/novel')}}
             ],
             props: { sidebar: true }
+        },
+        {
+            path: '/wenjian',
+            component:Main,
+            children: [
+                {
+                    path: '/wenjian/fs',
+                    name: 'fs', 
+                    components: {
+                        menu :ListEmpty,
+                        main: ()=>import('@/view/wenjian/fs')
+                    }
+                },
+                {
+                    path: '/wenjian/fs/:id',
+                    name: 'folder',
+                    components:{
+                        menu:ListEmpty,
+                        main: ()=>import('@/view/contextmenu/folder')
+                    }
+                }
+            ],
+            props: { sidebar: false }
         },
         {
             path: '*', component: Main,
