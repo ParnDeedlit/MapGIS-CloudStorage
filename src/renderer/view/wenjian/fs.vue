@@ -1,5 +1,5 @@
 <template>
-  <Row class="wrapper">
+  <Row class="wrapper" style="margin-left:50px;">
     <Col span="18" class="container">
       <div class="header">
         <header>文件管理器</header>

@@ -10,8 +10,8 @@
         <Input v-model="filename" placeholder="请输入新的文件名"></Input>
       </Modal>
       <!--文件目录-->
-      <div class="folder-container" style="margin-bottom: 50px;">
-        <div class="back" @click="back">
+      <div class="folder-container" style="margin-bottom: 50px; margin-top:50px;">
+        <div class="back" @click="back" >
           <Icon 
             type="ios-arrow-back" 
             size="28"
@@ -522,12 +522,12 @@
 <style lang="less" scoped>
   .folder {
     height: 100%;
-    width: 50%;
+    width: 70%;
     overflow-y: auto;
     position: fixed;
     z-index: 100;
-    top: 50px;
-    left: 25%;
+    top: 80px;
+    left:200px;;
     bottom: 0px;
     right: 0;
     .t-folder {
@@ -541,7 +541,7 @@
     height: 20px;
     line-height: 20px;
     position: absolute;
-    top: 4px;
+    top: 20px;
     z-index: 100;
   }
   .img-folder {
