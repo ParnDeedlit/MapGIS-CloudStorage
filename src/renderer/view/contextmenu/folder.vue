@@ -521,7 +521,7 @@
 </script>
 <style lang="less" scoped>
   .folder {
-    height: 100%;
+    height: 90%;
     width: 70%;
     overflow-y: auto;
     position: fixed;

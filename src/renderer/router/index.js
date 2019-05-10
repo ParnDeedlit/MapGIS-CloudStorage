@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import Main from '@/view/main/index'
 import HomeMenu from '@/components/menu/home';
 import ListMenu from '@/components/menu/list';
-import ListLocal  from '@/components/menu/local';
 import ListShare from '@/components/menu/share';
 import ListEmpty from '@/components/menu/empty';
 
@@ -12,16 +11,16 @@ import ListOther  from '@/components/menu/other';
 
 
 Vue.use(Router);
-
+//通用路由
 export default new Router({
     routes: [
         {
-            path: '/login',
+            path: '/',
             name: 'login',
             component: login
         },
         {
-            path: '/', component: Main,
+            path: '/main', component: Main,
             children: [
                 {
                     path: '/index',
@@ -29,18 +28,8 @@ export default new Router({
                     components: {menu: HomeMenu, main: () => import('@/view/index')}
                 }
             ],
-            props: { sidebar: true }
+            props: { sidebar: true,role:['admin','user'] }
         },
-/*         {
-            path: '/computer',
-            name: 'myfile1',
-            component: myfile,
-            children: [{
-              path: '/computer/:id',
-              name: 'folder',
-              component: folder
-            }]
-        } */
         {
             path: '/home', name: '/home', component: Main,
             children: [
@@ -70,11 +59,6 @@ export default new Router({
                     components: {menu: HomeMenu, main: () => import('@/view/home/seeds')}
                 },
                 {
-                    path: '/home/myfile',
-                    name: 'myfile',
-                    components: {menu: HomeMenu, main: () => import('@/view/home/myfile')}
-                },
-                {
                     path: '/home/other',
                     name: 'other',
                     components: {menu: HomeMenu, main: () => import('@/view/home/other')}
@@ -85,7 +69,7 @@ export default new Router({
                     components: {menu: HomeMenu, main: () => import('@/view/home/share')}
                 },
             ],
-            props: { sidebar: true }
+            props: { sidebar: true,role:['admin','user'] }
         },
         {
             path: '/list', component: Main,
@@ -94,7 +78,7 @@ export default new Router({
                 {path: '/list/uploads', name: 'listUploads', components: {menu: ListMenu, main: () => import('@/view/list/uploads')}},
                 {path: '/list/complete', name: 'listComplete', components: {menu: ListMenu, main: () => import('@/view/list/complete')}},
             ],
-            props: { sidebar: true }
+            props: { sidebar: true ,role:['admin','user']}
         },
         {
             path: '/share', component: Main,
@@ -103,7 +87,7 @@ export default new Router({
                 {path: '/share/friend', name: 'shareFriend', components: {menu: ListShare, main: () => import('@/view/share/friend')}},
                 {path: '/share/group', name: 'shareGroup', components: {menu: ListShare, main: () => import('@/view/share/group')}},
             ],
-            props: { sidebar: true }
+            props: { sidebar: true,role:['admin','user'] }
         },
         {
             path: '/func', component: Main,
@@ -119,7 +103,7 @@ export default new Router({
                 {path: '/other/app',name: 'otherApp', components: {menu :ListOther,main: ()=>import('@/view/other/app')}},
                 {path: '/other/novel',name: 'otherNovel', components: {menu :ListOther,main: ()=>import('@/view/other/novel')}}
             ],
-            props: { sidebar: true }
+            props: { sidebar: true ,role:['admin','user']}
         },
         {
             path: '/wenjian',
@@ -142,36 +126,38 @@ export default new Router({
                     }
                 }
             ],
-            props: { sidebar: false }
+            props: { sidebar: false,role:'admin'}
         },
-        /*{
-            path: '/local',
-            component:Main,
-            children: [
-                {
-                    path: '/local/computer',
-                    name: 'localCommon', 
-                    components: {
-                        menu :ListLocal,
-                        main: ()=>import('@/view/home/myfile')
-                    }
-                },
-                {
-                    path: '/local/computer/:id',
-                    name: 'localFolder',
-                    components:{
-                        menu :ListLocal,
-                        main: ()=>import('@/view/home/folder')
-                    }
-                },
-                {path: '/local/geo',name: 'localGeo', components: {menu :ListLocal,main: ()=>import('@/view/local/geo')}},
-                {path: '/local/other',name: 'localOther', components: {menu :ListLocal,main: ()=>import('@/view/local/other')}}
-            ],
-            props: { sidebar: true }
-        },*/
         {
             path: '*', component: Main,
             children: [{path: '_', component: () => import('@/view/index')},],
             props: { sidebar: true }
         }]
 })
+//仅管理员可见
+/*export const adminRouter= [
+    {
+        path: '/wenjian',
+            component:Main,
+            children: [
+                {
+                    path: '/wenjian/fs',
+                    name: 'fs', 
+                    components: {
+                        menu :ListEmpty,
+                        main: ()=>import('@/view/wenjian/fs')
+                    }
+                },
+                {
+                    path: '/wenjian/fs/:id',
+                    name: 'folder',
+                    components:{
+                        menu:ListEmpty,
+                        main: ()=>import('@/view/contextmenu/folder')
+                    }
+                }
+            ],
+            props: { sidebar: false,role:'admin'}
+        }
+] 
+*/
