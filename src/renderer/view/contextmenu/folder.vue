@@ -1,4 +1,6 @@
 <template>
+<div>
+  <file_permission :path='String(fileDetail.path)'>{{fileDetail.path}}</file_permission> 
   <transition name="slide" mode="out-in">
     <div class="folder" id="folder" @contextmenu="createNewOne($route.params.id)">
      <!--文件重命名dialog-->
@@ -159,10 +161,13 @@
       </Modal>
     </div>
   </transition>
+</div>
 </template>
+
 <script>
   import { mapGetters, mapMutations } from 'vuex'
   import { toMem } from '@/extend/filters'
+  import file_permission from "@/view/home/file_permission.vue"
   import {
     openFile,
     readFolder,
@@ -176,6 +181,9 @@
   } from '@/common/js/file'
   import wmic from 'node-wmic'
   export default {
+     components: {
+          file_permission
+      },
     computed: {
       ...mapGetters([
         'folderInfo'
