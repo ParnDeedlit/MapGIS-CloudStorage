@@ -319,7 +319,7 @@
         }
       },
       getDisk () {
-        wmic.disk().then(disk => {
+        wmic.LogicalDisk().then(disk => {
           disk.map((item, index) => {
             if (item.Caption[0] === this.tableData[0].path[0]) {
               this.currentDisk = Object.assign({}, item)
