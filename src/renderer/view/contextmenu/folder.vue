@@ -15,7 +15,15 @@
       <div class="folder-container" style="margin-bottom: 50px; margin-top:50px;">
         <div class="back" @click="back" >
           <Icon 
-            type="ios-arrow-back" 
+            type="md-arrow-back" 
+            size="28"
+            color="rgba(51, 174, 252, 0.5)"
+          >
+          </Icon>
+        </div>
+        <div class="go" @click="go" >
+          <Icon 
+            type="md-arrow-forward" 
             size="28"
             color="rgba(51, 174, 252, 0.5)"
           >
@@ -278,11 +286,21 @@
       },
       back () {
         if (this.$route.params.id.length <= 4) {
+         
           this.$router.replace({
             path: '/wenjian/fs'
           })
         } else {
           this.$router.back(-1)
+        }
+      },
+      go () {
+        if (this.$route.params.id.length <= 4) {
+          this.$router.replace({
+            path: '/wenjian/fs'
+          })
+        } else {
+          history.go(1)
         }
       },
       async forwardFolder (row) {
@@ -529,7 +547,7 @@
 </script>
 <style lang="less" scoped>
   .folder {
-    height: 100%;
+    height: 90%;
     width: 70%;
     overflow-y: auto;
     position: fixed;
@@ -545,11 +563,22 @@
   .back {
     padding: 0 5px 0 5px;
     cursor: pointer;
-    width: 20px;
-    height: 20px;
+    width: 70px;
+    height: 15px;
     line-height: 20px;
     position: absolute;
     top: 20px;
+    z-index: 100;
+  }
+   .go {
+    padding: 0 5px 0 5px;
+    cursor: pointer;
+    width: 70px;
+    height: 15px;
+    line-height: 20px;
+    position: absolute;
+    top: 20px;
+    margin-left: 30px;
     z-index: 100;
   }
   .img-folder {

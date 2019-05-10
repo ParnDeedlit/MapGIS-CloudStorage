@@ -22,8 +22,23 @@ Vue.http = Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
+  /*if(store.getters.role){
+    console.log(store)
+    const roles = store.getters.role
+    store.dispatch('routes',roles).then(() => {
+      console.log(store.getters.addRouters)
+      router.addRoutes(store.getters.addRouters) 
+      console.log(router)
+      next()
+     }).catch(e=>{
+       if(e){
+        next('/') 
+       }
+     })
+    }*/
   iView.LoadingBar.start()
   next()
+  
 })
 
 router.afterEach((to, from, next) => {
@@ -37,4 +52,3 @@ new Vue({
   store,
   template: '<App/>'
 }).$mount('#app')
-

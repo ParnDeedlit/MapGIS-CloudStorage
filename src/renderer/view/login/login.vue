@@ -11,7 +11,7 @@
       </div>
      </Header>
   <Layout>
-  <Conent>
+  <Content>
     <div  style="float:left;text-align:center;width:420px; height:455px; margin:35px;padding:30px;">
           <h2>扫一扫登录</h2><br><br>
           <h3 style="font-size:18px;font-weight:normal;">请使用百度网盘扫码登录</h3><br>
@@ -45,7 +45,7 @@
     </CheckboxGroup>
     </FormItem>
       <FormItem>
-           <Button type="primary" @click="handleSubmit" :loading="logining" long>登录</Button>
+           <Button type="primary" @click="handleLogin(account)" :loading="logining" long>登录</Button>
       </FormItem>
       </Form>
       <br><br>
@@ -58,7 +58,7 @@
            </div>
       </div>
     </div>
-  </Conent>
+  </Content>
 </Layout>
 </Layout>
 </div>
@@ -71,7 +71,7 @@
         background: url("../../assets/img/logo.png") no-repeat;
     }
 </style>
-import axios from 'axios'
+
 <script>
 export default {
   data() {
@@ -81,6 +81,7 @@ export default {
         password: "123456"
       },
       logining:false,
+      maximum:false,
       check:['自动登录'],
       rule: {
         username: [
@@ -107,36 +108,18 @@ export default {
     };
   },
   methods: {
-    handleLogin() {
-    this.$refs.AccountForm.validate((valid) => {
-     if (valid) {
-      this.logining = true;
-      let loginParams = {
-       username: this.account.username,
-       password: this.account.password
-      }
-      // 调用axios登录接口
-      axios.post('/user/login',loginParams).then(res => {
-       this.logining = false;
-       // 根据返回的code判断是否成功
-       let { code, msg, user } = res.data;
-       if (code === 200) {
-        this.$message.success('success');
-        // 登陆成功，用户信息就保存在sessionStorage中
-        sessionStorage.setItem('user', JSON.stringify(user));
-        this.$router.push('/index')
- 
-       }else {
-        this.$message.success('success');
-       }
-      }).catch(err =>{
-       console.log(err);
-      });
-     }else {
-      console.log('error submit!');
-      return false;
-     }
-    })
+    handleLogin(data) {
+      this.$store.dispatch('logins',data).then(res => {
+           if(this.$store.getters.role==='admin'){
+             this.$router.push('/wenjian/fs');
+           }else if(this.$store.getters.role==='user'){
+                 this.$router.push('/index');
+           }else{
+             this.$router.push('/');
+           }
+        }).catch(() => {
+
+        })  
    },
     exitApp() {
                 this.$electron.ipcRenderer.send('exitApp');
