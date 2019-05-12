@@ -109,6 +109,7 @@
 </template>
 
 <script>
+import { Notice } from "iview";
 export default {
   data() {
     return {
@@ -145,7 +146,26 @@ export default {
   },
   methods: {
     handleLogin(data) {
+      console.log("vuex", this.$store.state);
       this.$store
+        .dispatch("loginAsyncTask", data)
+        .then(sucess => {
+          console.log("success", sucess);
+          Notice.open({
+            title: "登陆成功",
+            desc: JSON.stringify(sucess)
+          });
+          this.$router.push("/index");
+        })
+        .catch(fail => {
+          console.log("fail", fail);
+          Notice.open({
+            title: "登陆失败，以用户访问",
+            desc: JSON.stringify(fail)
+          });
+          this.$router.push("/index");
+        });
+      /* this.$store
         .dispatch("logins", data)
         .then(res => {
           if (this.$store.getters.role === "admin") {
@@ -156,7 +176,7 @@ export default {
             this.$router.push("/");
           }
         })
-        .catch(() => {});
+        .catch(() => {}); */
     },
     exitApp() {
       this.$electron.ipcRenderer.send("exitApp");

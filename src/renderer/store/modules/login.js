@@ -1,5 +1,5 @@
-import {users} from '../../mock/data/user'
-import router,{adminRouter}  from  '../../router'
+import { users } from "../../mock/data/user";
+import router, { adminRouter } from "../../router";
 
 //判断用户权限是否存在
 /*function hasPermission(roles,route) {
@@ -24,49 +24,52 @@ function filterRouter(adminRouter,roles) {
 }
 */
 
- const  login={
+const login = {
   state: {
-  username:sessionStorage.getItem('username'),
-  role: sessionStorage.getItem('role'),
-  newrouter:'',
-  addRouters: []
-},
- mutations:{
-  setUserName(state,username){
-       state.username=username
+    username: sessionStorage.getItem("username"),
+    role: sessionStorage.getItem("role"),
+    newrouter: "",
+    addRouters: []
   },
-  setRole(state,role){
-      state.role=role
-  },
- /* setNewRouter(state,router){
+  mutations: {
+    setUserName(state, username) {
+      state.username = username;
+    },
+    setRole(state, role) {
+      state.role = role;
+    }
+    /* setNewRouter(state,router){
      state.addRouters = router
      state.routers = router.concat(routers)
   }
   */
-},
-actions:{
- logins({commit},info){
-         return  new Promise((resolve,reject)=>{
-        let  data={}
-          users.map(function(item){
-             if(item.username===info.username &&  item.password===info.password){
-                 commit('setUserName',item.username);
-                 sessionStorage.setItem('username',item.username);
-                 commit('setRole',item.role);
-                 sessionStorage.setItem('role',item.role);
-                 data={username:item.username,role:item.role}
-                 console.log(data)
-                 return data 
-             }else{
-               return data
-             }
-          })
-          resolve(data)
-         }).catch(error=>{
-           reject(error);
-         })
-  }
-  /*Roles({ commit }, newrouter){
+  },
+  actions: {
+    logins({ commit }, info) {
+      return new Promise((resolve, reject) => {
+        let data = {};
+        users.map(function(item) {
+          if (
+            item.username === info.username &&
+            item.password === info.password
+          ) {
+            commit("setUserName", item.username);
+            sessionStorage.setItem("username", item.username);
+            commit("setRole", item.role);
+            sessionStorage.setItem("role", item.role);
+            data = { username: item.username, role: item.role };
+            console.log(data);
+            return data;
+          } else {
+            return data;
+          }
+        });
+        resolve(data);
+      }).catch(error => {
+        reject(error);
+      });
+    }
+    /*Roles({ commit }, newrouter){
     return new Promise((resolve, reject) => {
       commit('setNewRouter',newrouter); //存储最新路由
       resolve(newrouter);
@@ -74,8 +77,8 @@ actions:{
         reject(error);
     });
 },*/
-//根据角色形成新的路由表
-/*routes({commit},data){
+    //根据角色形成新的路由表
+    /*routes({commit},data){
   return new Promise(resolve => {
       const roles = data.map(item => {
           return item.name
@@ -92,10 +95,6 @@ actions:{
   })
 }*/
   }
- }
+};
 
- 
-
-export  default  login
-
-
+export default login;
