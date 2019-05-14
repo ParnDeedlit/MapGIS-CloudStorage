@@ -35,10 +35,6 @@
         console.log({{path}})
         console.log({{size}})
       </div>
-<<<<<<< HEAD
-=======
-    </Card>
->>>>>>> 71988cd2d76eba2680589d904c233aca05710f8b
   </div>
 </template>
 <script>
@@ -46,11 +42,7 @@ var fs = require("fs")
 var path=require('path')
 export default{
   props: {
-<<<<<<< HEAD
     pathStr:''
-=======
-    path:''
->>>>>>> 71988cd2d76eba2680589d904c233aca05710f8b
   },
   data(){
     return {
@@ -68,28 +60,12 @@ export default{
       file: "",
       directory: "",
       filetype:""
-<<<<<<< HEAD
     };
-=======
-    }
->>>>>>> 71988cd2d76eba2680589d904c233aca05710f8b
   },
  methods:{
   show(){
     var _this = this
-<<<<<<< HEAD
     fs.stat(String(this.$props.pathStr),function(err,stats){
-=======
-    fs.stat(String(path),function(err,stats){
-    // if(stats.isFile()){
-    //     console.log('file');
-    //     console.log(String(stats.size))
-    //     console.log(typeof(String(stats.size)))
-    // }
-    // if(stats.isDirectory()){
-    //     console.log('directory');
-    // }
->>>>>>> 71988cd2d76eba2680589d904c233aca05710f8b
     _this.size = String(stats['size']),
     _this.mode = String(stats['mode']),
     _this.otherseXecute = String(stats['mode']&1 ? 'x':'-'),
