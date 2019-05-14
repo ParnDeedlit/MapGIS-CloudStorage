@@ -4,12 +4,8 @@
       <div class="head-disk">
         <img :src="imgDisk" class="img-disk">
       </div> -->
-      <!-- <button @click="show">显示</button> -->
-      <div>
-        <label>文件类型</label>
-				<p>{{filetype}}</p>
-        <label>文件大小：</label>
-				<p>{{size}}bite</p>
+      <button type="primary" @click="show" >显示</button>
+      <div class="permiss">
 				<label>mode：</label>
 				<p>{{mode}}</p>
 				<label>其他人执行：</label>
@@ -32,8 +28,6 @@
 				<p>{{file}}</p>
         	<label>是否为文件夹</label>
 				<p>{{directory}}</p>
-        console.log({{path}})
-        console.log({{size}})
       </div>
     </Card>
   </div>
@@ -43,7 +37,7 @@ var fs = require("fs")
 var path=require('path')
 export default{
   props: {
-    path:''
+    pathStr:''
   },
   data(){
     return {
@@ -66,7 +60,7 @@ export default{
  methods:{
   show(){
     var _this = this
-    fs.stat(String(path),function(err,stats){
+    fs.stat(String(this.$props.pathStr),function(err,stats){
     // if(stats.isFile()){
     //     console.log('file');
     //     console.log(String(stats.size))
@@ -75,6 +69,7 @@ export default{
     // if(stats.isDirectory()){
     //     console.log('directory');
     // }
+    if(!err){
     _this.size = String(stats['size']),
     _this.mode = String(stats['mode']),
     _this.otherseXecute = String(stats['mode']&1 ? 'x':'-'),
@@ -88,15 +83,24 @@ export default{
     _this.ownerRead = String(stats['mode']&400?'r':'-'),
     _this.file = String(stats['mode']&100000?'f':'-'),
     _this.directory = String(stats['mode']&40000?'d':'-')
-    _this.filetype = path.extname("1.jpg")
-    console.log(_this.size)
+    //_this.filetype = path.extname(String(_this.$props.pathStr))
+    }
  })
-  }
  },
- created(){
-   this.show()
+ mounted:function(){
+   var _this = this
+   _this.show()
+}
 }
 }
 </script>
-
- 
+<style scoped>
+  .permiss{
+    width: 100%;
+    height: 100%;
+    border-right: 1px solid #dddfe1;
+    font-size: 15px;
+    font-weight: bold;
+    color:#5cadff;
+    }
+</style>

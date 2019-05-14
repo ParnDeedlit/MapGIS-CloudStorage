@@ -17,6 +17,7 @@
                         <span @click="appSetting"><Icon type="ios-settings-outline"/></span>
                         <span v-if="maximum" @click="restoreWindow"><Icon type="ios-contract"/></span>
                         <span v-else @click="restoreWindow"><Icon type="ios-expand"/></span>
+                        <span @click="login">登录</span>
                         <span @click="minWindow"><Icon type="md-remove"/></span>
                         <span @click="exitApp"><Icon type="md-close"/></span>
                     </div>
@@ -39,9 +40,8 @@
 </template>
 
 <script>
-
+    import router from 'vue-router'
     import Update from "@/components/update";
-
     export default {
         name: "index",
         components: {Update},
@@ -70,6 +70,9 @@
             restoreWindow() {
                 this.$electron.ipcRenderer.send('maximizeWindow');
             },
+            login(){
+                this.$router.push('/')
+            }
         }
     }
 </script>
