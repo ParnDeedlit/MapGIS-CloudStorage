@@ -14,6 +14,7 @@
                         <MenuItem name="6" :to="{name:'fs'}" style="-webkit-app-region: no-drag;">文件管理</MenuItem>
                     </div>
                     <div class="right">
+                        <span @click="loginOut(isLogin)" :isLogin="isLogin" style="font-size:15px">退出登录</span>
                         <span @click="appSetting"><Icon type="ios-settings-outline"/></span>
                         <span v-if="maximum" @click="restoreWindow"><Icon type="ios-contract"/></span>
                         <span v-else @click="restoreWindow"><Icon type="ios-expand"/></span>
@@ -42,6 +43,11 @@
 <script>
     import router from 'vue-router'
     import Update from "@/components/update";
+<<<<<<< HEAD
+=======
+    import { Notice } from "iview";
+
+>>>>>>> a4b4acbf2092a2bbd38fb38a9e0f4e3ebe406095
     export default {
         name: "index",
         components: {Update},
@@ -52,6 +58,7 @@
             return {
                 maximum: false,
                 sidewidth: this.sidebar? 165 : 0,
+                isLogin: true
             }
         },
         methods: {
@@ -70,9 +77,33 @@
             restoreWindow() {
                 this.$electron.ipcRenderer.send('maximizeWindow');
             },
+<<<<<<< HEAD
             login(){
                 this.$router.push('/')
             }
+=======
+            loginOut(isLogin) {
+                console.log("vuex", this.$store.state);
+                this.$store
+                .dispatch("loginOut",isLogin)
+                .then(sucess => {
+                    console.log("退出成功");
+                     Notice.open({
+                        title: "退出成功",
+                        desc: JSON.stringify(sucess)
+                    });
+                    this.$router.push("/");
+                })
+                  .catch(fail => {
+                   console.log("退出失败");
+                   Notice.open({
+                        title: "退出失败",
+                        desc: JSON.stringify(fail)
+                    });
+                    this.$router.push("/index");
+                  });
+            },          
+>>>>>>> a4b4acbf2092a2bbd38fb38a9e0f4e3ebe406095
         }
     }
 </script>

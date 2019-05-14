@@ -29,7 +29,6 @@
         	<label>是否为文件夹</label>
 				<p>{{directory}}</p>
       </div>
-    </Card>
   </div>
 </template>
 <script>
@@ -55,20 +54,12 @@ export default{
       file: "",
       directory: "",
       filetype:""
-    }
+    };
   },
  methods:{
   show(){
     var _this = this
     fs.stat(String(this.$props.pathStr),function(err,stats){
-    // if(stats.isFile()){
-    //     console.log('file');
-    //     console.log(String(stats.size))
-    //     console.log(typeof(String(stats.size)))
-    // }
-    // if(stats.isDirectory()){
-    //     console.log('directory');
-    // }
     if(!err){
     _this.size = String(stats['size']),
     _this.mode = String(stats['mode']),
