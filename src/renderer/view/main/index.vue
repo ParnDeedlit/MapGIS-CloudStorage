@@ -14,6 +14,7 @@
                         <MenuItem name="6" :to="{name:'fs'}" style="-webkit-app-region: no-drag;">文件管理</MenuItem>
                     </div>
                     <div class="right">
+                        <span  @click="loginOut(islonging)"    >退出</span>
                         <span @click="appSetting"><Icon type="ios-settings-outline"/></span>
                         <span v-if="maximum" @click="restoreWindow"><Icon type="ios-contract"/></span>
                         <span v-else @click="restoreWindow"><Icon type="ios-expand"/></span>
@@ -41,7 +42,7 @@
 <script>
 
     import Update from "@/components/update";
-
+   import { Notice } from "iview";  
     export default {
         name: "index",
         components: {Update},
@@ -52,6 +53,7 @@
             return {
                 maximum: false,
                 sidewidth: this.sidebar? 165 : 0,
+                islonging:true
             }
         },
         methods: {
@@ -70,6 +72,26 @@
             restoreWindow() {
                 this.$electron.ipcRenderer.send('maximizeWindow');
             },
+     loginOut(data){
+        this.$store
+        .dispatch("loginOut", data)
+        .then(sucess => {
+          console.log("success", sucess);
+          Notice.open({
+            title: "成功",
+            desc: JSON.stringify(sucess)
+          });
+          this.$router.push("/");
+        })
+        .catch(fail => {
+          console.log("fail", fail);
+          Notice.open({
+            title: "失败",
+            desc: JSON.stringify(fail)
+          });
+          this.$router.push("/index");
+        });
+            }
         }
     }
 </script>
@@ -106,10 +128,10 @@
     .right {
         float: right;
         margin-right: 10px;
-        font-size: 20px;
+        font-size: 12px;
         -webkit-app-region: no-drag;
     }
-
+    
     .right span {
         cursor: pointer;
         margin: 0 5px;

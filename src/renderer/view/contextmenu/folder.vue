@@ -1,6 +1,6 @@
 <template>
 <div>
-  <file_permission :path='String(fileDetail.path)'>{{fileDetail.path}}</file_permission> 
+  <file_permission :pathStr='String(fileDetail.path)'>{{fileDetail.path}}</file_permission> 
   <transition name="slide" mode="out-in">
     <div class="folder" id="folder" @contextmenu="createNewOne($route.params.id)">
      <!--文件重命名dialog-->
@@ -501,7 +501,7 @@
             me.showFileDetail = true
           }
         })
-
+       
         let filePieMenu = new MenuItem({
           label: '文件磁盘分布',
           accelerator: 'CmdOrCtrl+T',

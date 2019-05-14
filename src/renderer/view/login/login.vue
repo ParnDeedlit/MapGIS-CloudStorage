@@ -165,18 +165,6 @@ export default {
           });
           this.$router.push("/index");
         });
-      /* this.$store
-        .dispatch("logins", data)
-        .then(res => {
-          if (this.$store.getters.role === "admin") {
-            this.$router.push("/wenjian/fs");
-          } else if (this.$store.getters.role === "user") {
-            this.$router.push("/index");
-          } else {
-            this.$router.push("/");
-          }
-        })
-        .catch(() => {}); */
     },
     exitApp() {
       this.$electron.ipcRenderer.send("exitApp");

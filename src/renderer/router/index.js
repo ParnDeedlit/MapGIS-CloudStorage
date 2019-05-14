@@ -11,7 +11,7 @@ import ListOther  from '@/components/menu/other';
 
 
 Vue.use(Router);
-//通用路由
+
 export default new Router({
     routes: [
         {
@@ -134,30 +134,3 @@ export default new Router({
             props: { sidebar: true }
         }]
 })
-//仅管理员可见
-/*export const adminRouter= [
-    {
-        path: '/wenjian',
-            component:Main,
-            children: [
-                {
-                    path: '/wenjian/fs',
-                    name: 'fs', 
-                    components: {
-                        menu :ListEmpty,
-                        main: ()=>import('@/view/wenjian/fs')
-                    }
-                },
-                {
-                    path: '/wenjian/fs/:id',
-                    name: 'folder',
-                    components:{
-                        menu:ListEmpty,
-                        main: ()=>import('@/view/contextmenu/folder')
-                    }
-                }
-            ],
-            props: { sidebar: false,role:'admin'}
-        }
-] 
-*/
