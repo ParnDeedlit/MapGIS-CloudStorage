@@ -14,6 +14,7 @@
                         <MenuItem name="6" :to="{name:'fs'}" style="-webkit-app-region: no-drag;">文件管理</MenuItem>
                     </div>
                     <div class="right">
+                        <span @click="loginOut(isLogin)" :isLogin="isLogin" style="font-size:15px">退出登录</span>
                         <span @click="appSetting"><Icon type="ios-settings-outline"/></span>
                         <span v-if="maximum" @click="restoreWindow"><Icon type="ios-contract"/></span>
                         <span v-else @click="restoreWindow"><Icon type="ios-expand"/></span>
@@ -41,6 +42,7 @@
 <script>
 
     import Update from "@/components/update";
+    import { Notice } from "iview";
 
     export default {
         name: "index",
@@ -52,6 +54,7 @@
             return {
                 maximum: false,
                 sidewidth: this.sidebar? 165 : 0,
+                isLogin: true
             }
         },
         methods: {
@@ -70,6 +73,27 @@
             restoreWindow() {
                 this.$electron.ipcRenderer.send('maximizeWindow');
             },
+            loginOut(isLogin) {
+                console.log("vuex", this.$store.state);
+                this.$store
+                .dispatch("loginOut",isLogin)
+                .then(sucess => {
+                    console.log("退出成功");
+                     Notice.open({
+                        title: "退出成功",
+                        desc: JSON.stringify(sucess)
+                    });
+                    this.$router.push("/");
+                })
+                  .catch(fail => {
+                   console.log("退出失败");
+                   Notice.open({
+                        title: "退出失败",
+                        desc: JSON.stringify(fail)
+                    });
+                    this.$router.push("/index");
+                  });
+            },          
         }
     }
 </script>
