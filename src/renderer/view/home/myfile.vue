@@ -1,21 +1,24 @@
 <template>
+<div>
+  123
+  <h1>权限信息</h1>
+  <file_permission></file_permission> 
   <div>
-    <div class="content">
-      <Table
-        size="small"
-        :columns="columns"
-        :data="normalize(diskInfo)"
-        @on-row-click="info"
-        @on-row-dblclick="forward"
-        v-show="$route.name === 'localCommon'"
-      ></Table>
-      <transition name="fade">
-        <keep-alive>
-          <router-view name="filefolder"></router-view>
-        </keep-alive>
-      </transition>
-    </div>
+          <Table
+            size="small"
+            :columns="columns"
+            :data="normalize(diskInfo)"
+            @on-row-click="info"
+            @on-row-dblclick="forward"
+            v-show="$route.name === 'localCommon'"
+          ></Table>
+          <transition name="fade">
+            <keep-alive>
+              <router-view name="filefolder"></router-view>
+            </keep-alive>
+          </transition>
   </div>
+</div>
 </template>
  
 <script>
@@ -23,7 +26,11 @@ import wmic from "node-wmic";
 import { toMem } from "@/extend/filters";
 import { readFolder } from "@/common/js/file";
 import { mapMutations } from "vuex";
+import file_permission from "@/view/home/file_permission.vue";
 export default {
+  components: {
+      file_permission
+    },
   data() {
     // name: "myfile1";
     return {
@@ -106,5 +113,41 @@ export default {
   }
 };
 </script> 
+<style lang="less" scoped>
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity .4s
+  }
+  .fade-enter,
+  .fade-leave {
+    opacity: 0
+  }
+  .wrapper {
+    height: 100%;
+    overflow-y: auto;
+  }
+  .ivu-col-span-6 {
+    height: 100%;
+  }
+  .header {
+    padding: 10px;
+    header {
+      font: bold 20px/150% 'Microsoft Yahei';
+    }
+  }
+  .container {
+    position: relative;
+    height: 100%;
+    .footer-bread {
+      position: fixed;
+      left: 26%;
+      top: 10px;
+      z-index: 100;
+    }
+  }
+  .ivu-table-wrapper {
+    border: none !important;
+  }
+</style>
 
 
