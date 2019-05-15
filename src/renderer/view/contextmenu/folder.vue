@@ -12,24 +12,7 @@
             <Input v-model="filename" placeholder="请输入新的文件名"></Input>
           </Modal>
           <!--文件目录-->
-          <div class="folder-container" style="margin-bottom: 50px; margin-top:50px;">
-            <div class="back" @click="back" >
-              <Icon 
-                type="md-arrow-back" 
-                size="28"
-                color="rgba(51, 174, 252, 0.5)"
-              >
-              </Icon>
-            </div>
-            <div class="go" @click="go" >
-              <Icon 
-                type="md-arrow-forward" 
-                size="28"
-                color="rgba(51, 174, 252, 0.5)"
-              >
-              </Icon>
-            </div>
-
+          <div class="folder-container" style="margin-bottom: 0px; margin-top: 0px;">
             <div class="t-folder ivu-table-wrapper">
               <div class="ivu-table ivu-table-small" style="margin-bottom: 50px;">
                 <div class="ivu-table-header">
@@ -42,8 +25,17 @@
                     <thead>
                       <tr>
                         <th class="" style="width: 35%">
-                          
-                          <div class="ivu-table-cell" style=""><span>名称</span>
+                          <div class="back" @click="back" >
+                              <Icon 
+                                type="ios-arrow-back"
+                                size="28"
+                                color="rgba(51, 174, 252, 0.5)"
+                              >
+                              </Icon>
+                            </div>
+                          <div class="ivu-table-cell" style="">
+                            
+                            <span>名称</span>
                           </div>
                         </th>
                         <th class="" style="width: 30%">
@@ -253,15 +245,6 @@
           this.$router.back(-1)
         }
       },
-      go () {
-        if (this.$route.params.id.length <= 4) {
-          this.$router.replace({
-            path: '/wenjian/fs'
-          })
-        } else {
-          history.go(1)
-        }
-      },
       async forwardFolder (row) {
         if (row.type === '文件夹') {
           await readFolder(row.path + '\\\\').then(res => {
@@ -435,7 +418,6 @@
             }
           }
         })
-
         let renameMenu = new MenuItem({
           'label': '重命名',
           accelerator: 'CmdOrCtrl+R',
@@ -457,25 +439,6 @@
             console.log(`fuzhi: ${me.copyParams.src}`)
           }
         })
-
-        // let fileInfoMenu = new MenuItem({
-        //   label: '查看文件信息',
-        //   accelerator: 'CmdOrCtrl+J',
-        //   click () {
-        //     me.fileDetail = Object.assign({}, row)
-        //     me.showFileDetail = true
-        //   }
-        // })
-
-        let filePieMenu = new MenuItem({
-          label: '文件磁盘分布',
-          accelerator: 'CmdOrCtrl+T',
-          click () {
-            me.initFilePie(row)
-            me.showFilePie = true
-          }
-        })
-
         let cutMenu = new MenuItem({
           label: '剪切',
           accelerator: 'CmdOrCtrl+X',
@@ -493,8 +456,7 @@
         menu1.append(deleteMenu)
         menu1.append(renameMenu)
         menu1.append(cutMenu)
-        menu1.append(fileInfoMenu)
-        menu1.append(filePieMenu)
+       // menu1.append(filePieMenu) 
         menu1.popup(this.$electron.remote.getCurrentWindow())
       },
       cutFile () {
@@ -526,26 +488,9 @@
       height: 100%; 
     }
   }
-   .go {
-    padding: 0 5px 0 5px;
-    cursor: pointer;
-    width: 70px;
-    height: 15px;
-    line-height: 20px;
-    position: fixed;
-    top: 20px;
-    margin-left: 30px;
-    z-index: 100;
-  }
   .back {
-    padding: 0 5px 0 5px;
-    cursor: pointer;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    position: fixed;
-    top: 4px;
-    z-index: 100;
+    display: inline;
+    left: 0 px;
   }
   .img-folder {
     width: 16px !important;

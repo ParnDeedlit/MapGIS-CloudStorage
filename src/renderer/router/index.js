@@ -30,7 +30,7 @@ export default new Router({
             ],
             props: { sidebar: true, role: ['admin', 'user'] }
         },
-         {
+          {
             path: '/home', name: '/home', component: Main,
             children: [
                 {
@@ -72,8 +72,8 @@ export default new Router({
                 },
             ],
             props: { sidebar: true, role: ['admin', 'user'] }
-        },
-         {
+        }, 
+          {
             path: '/list', component: Main,
             children: [
                 { path: '/list/index', name: 'listIndex', components: { menu: ListMenu, main: () => import('@/view/list/index') } },
@@ -107,7 +107,7 @@ export default new Router({
             ],
             props: { sidebar: true, role: ['admin', 'user'] }
         }, 
-         {
+          {
             path: '/wenjian',
             component: Main,
             children: [
@@ -135,5 +135,5 @@ export default new Router({
             path: '*', component: Main,
             children: [{ path: '_', component: () => import('@/view/index') },],
             props: { sidebar: true }
-        } ]
+        } ] 
 })
