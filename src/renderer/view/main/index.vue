@@ -18,8 +18,7 @@
             <MenuItem name="6" :to="{name:'fs'}" style="-webkit-app-region: no-drag;">文件管理</MenuItem>
           </div>
           <div class="right">
-            <span @click="loginOut(islonging)">退出</span>
-            <span @click="login()">登录</span>
+            <span @click="loginOut(isLogin) " style="font-size:15px">退出登录</span>
             <span @click="appSetting">
               <Icon type="ios-settings-outline"/>
             </span>
@@ -45,7 +44,6 @@
         <Layout style="background-color: #FFFFFF;">
           <Content :style="{background: '#fff'}">
             <router-view name="main"/>
-            <!-- <router-view name="filefolder"></router-view> -->
           </Content>
         </Layout>
       </Layout>
@@ -87,9 +85,6 @@ export default {
     restoreWindow() {
       this.$electron.ipcRenderer.send("maximizeWindow");
     },
-    login() {
-      //this.$router.push("/");
-    },
     loginOut(isLogin) {
       console.log("vuex", this.$store.state);
       this.$store
@@ -121,7 +116,7 @@ export default {
   padding: 0;
   background-color: red;
   -webkit-user-select: none;
-  /* font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif; */
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif; 
 }
 
 .layout-logo {

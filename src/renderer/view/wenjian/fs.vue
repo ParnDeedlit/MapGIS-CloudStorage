@@ -78,7 +78,6 @@ export default {
         return;
       }
       let path = row.Name + "\\\\";
-      //console.log("forward",row);
       await readFolder(path).then(res => {
         this.getFolderInfo(res);
         self.way = res[0]['location']
