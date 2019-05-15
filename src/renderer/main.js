@@ -39,17 +39,17 @@ router.beforeEach((to, from, next) => {
 iView.LoadingBar.start()
 next()
 })
-router.beforeEach((to, from, next) => {
-  console.log(store)
-  let role = store.state.user.role
-  console.log(role)
-  if(to.meta.requiresAuth && role ==='guest'){
-     alert('只有user才能看,请返回登录')
-     return next('from.path')
-  }else{
-    return next()
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   console.log(store)
+//   let role = store.state.user.role
+//   console.log(role)
+//   if(to.meta.requiresAuth && role ==='guest'){
+//      alert('只有user才能看,请返回登录')
+//      return next('from.path')
+//   }else{
+//     return next()
+//   }
+// })
 
 //this.$store.state.user.role
 router.afterEach((to, from, next) => {

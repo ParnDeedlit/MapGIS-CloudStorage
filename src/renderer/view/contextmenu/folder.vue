@@ -1,9 +1,9 @@
 <template>
   <Row class="wrapper">
-      <Col span="5" class='left'>
+      <!-- <Col span="5" class='left'>
               <span class="permission"><file_permission :pathStr='fileDetail.path'></file_permission></span>
-      </Col>
-      <Col span="11" class="container">
+      </Col> -->
+      <Col span="9" class="container">
       <transition name="slide" mode="out-in">
         <div class="folder" id="folder" @contextmenu="createNewOne($route.params.id)">
         <!--文件重命名dialog-->
@@ -45,6 +45,22 @@
                     <thead>
                       <tr>
                         <th class="" style="width: 35%">
+                            <div class="back" @click="back" >
+                                <Icon 
+                                  type="md-arrow-back" 
+                                  size="16"
+                                  color="rgba(51, 174, 252, 0.5)"
+                                >
+                                </Icon>
+                              </div>
+                              <div class="go" @click="go" >
+                                <Icon 
+                                  type="md-arrow-forward" 
+                                  size="16"
+                                  color="rgba(51, 174, 252, 0.5)"
+                                >
+                                </Icon>
+                              </div>
                           <div class="ivu-table-cell" style=""><span>名称</span>
                           </div>
                         </th>
@@ -178,8 +194,9 @@
         </div>
       </transition>
       </col>
-      <Col span="4" class="right">
-        <div>
+      <Col span="9" class="right">
+        <div> 
+              <span class="permission"><file_permission :pathStr='fileDetail.path'></file_permission></span>
               <p>
                 <span class="file-title">文件名：</span>
                 <span> {{fileDetail.name}} </span>
@@ -609,29 +626,19 @@
   }
 </script>
 <style lang="less" scoped>
-
-    //position: fixed;
-    // z-index: 100;
-    // top: 80px;
-    // left:200px;;
-    // bottom: 0px;
-    // right: 0;
-    // .t-folder {
-    //   height: 100%; 
-    // }
-  .roll{
-     height: 100%;
-     overflow-y: auto;
-  }
-  .back {
-    padding: 0 5px 0 5px;
-    cursor: pointer;
-    width: 70px;
-    height: 15px;
-    line-height: 20px;
-    position: absolute;
-    top: 20px;
+ .folder {
+    height: 100%;
+    width: 50%;
+    overflow-y: auto;
+    position: fixed;
     z-index: 100;
+    top: 100px;
+    left: 3%;
+    bottom: 0px;
+    right: 0;
+    .t-folder {
+      height: 100%; 
+    }
   }
    .go {
     padding: 0 5px 0 5px;
@@ -639,63 +646,166 @@
     width: 70px;
     height: 15px;
     line-height: 20px;
-    position: absolute;
+    position: fixed;
     top: 20px;
     margin-left: 30px;
     z-index: 100;
   }
-  // .img-folder {
-  //   width: 16px !important;
-  //   height: 16px !important;
-  // }
-  // .vertical-center-modal{
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
+  .back {
+    padding: 0 5px 0 5px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    position: fixed;
+    top: 4px;
+    z-index: 100;
+  }
+  .img-folder {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  .vertical-center-modal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  //   .ivu-modal{
-  //     top: 0;
-  //   }
+    .ivu-modal{
+      top: 0;
+    }
+  }
+  .file-card {
+    box-shadow: 0 1px 6px rgba(0,0,0,.2);
+    border-color: #eee;
+    p {
+      padding-bottom: 5px;
+    }
+    .file-title {
+      display: inline-block;
+      width: 150px;
+      text-align: right;
+    }
+  }
+  .slide-enter-active, .slide-leave-active {
+    transition: opacity .4s;
+  }
+  .slide-enter, .slide-leave {
+    opacity: 0;
+  }
+  .ivu-table-row:hover td{
+    background-color:#ebf7ff !important;
+  }
+  .ivu-table-row td {
+    height: 30px !important;
+    line-height: 150%;
+  }
+  .ivu-table-cell {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  //   //position: fixed;
+  //   // z-index: 100;
+  //   // top: 80px;
+  //   // left:200px;;
+  //   // bottom: 0px;
+  //   // right: 0;
+  //   // .t-folder {
+  //   //   height: 100%; 
+  //   // }
+  // .roll{
+  //    height: 100%;
+  //    overflow-y: auto;
   // }
-  // .file-card {
-  //   box-shadow: 0 1px 6px rgba(0,0,0,.2);
-  //   border-color: #eee;
-  //   p {
-  //     padding-bottom: 5px;
-  //   }
-  //   .file-title {
-  //     display: inline-block;
-  //     width: 150px;
-  //     text-align: right;
-  //   }
+  // .back {
+  //   padding: 0 5px 0 5px;
+  //   cursor: pointer;
+  //   width: 70px;
+  //   height: 15px;
+  //   line-height: 20px;
+  //   position: absolute;
+  //   top: 20px;
+  //   z-index: 100;
   // }
-  // .slide-enter-active, .slide-leave-active {
-  //   transition: opacity .4s;
+  //  .go {
+  //   padding: 0 5px 0 5px;
+  //   cursor: pointer;
+  //   width: 70px;
+  //   height: 15px;
+  //   line-height: 20px;
+  //   position: absolute;
+  //   top: 20px;
+  //   margin-left: 30px;
+  //   z-index: 100;
   // }
-  // .slide-enter, .slide-leave {
-  //   opacity: 0;
+  // // .img-folder {
+  // //   width: 16px !important;
+  // //   height: 16px !important;
+  // // }
+  // // .vertical-center-modal{
+  // //   display: flex;
+  // //   align-items: center;
+  // //   justify-content: center;
+
+  // //   .ivu-modal{
+  // //     top: 0;
+  // //   }
+  // // }
+  // // .file-card {
+  // //   box-shadow: 0 1px 6px rgba(0,0,0,.2);
+  // //   border-color: #eee;
+  // //   p {
+  // //     padding-bottom: 5px;
+  // //   }
+  // //   .file-title {
+  // //     display: inline-block;
+  // //     width: 150px;
+  // //     text-align: right;
+  // //   }
+  // // }
+  // // .slide-enter-active, .slide-leave-active {
+  // //   transition: opacity .4s;
+  // // }
+  // // .slide-enter, .slide-leave {
+  // //   opacity: 0;
+  // // }
+  // // .ivu-table-row:hover td{
+  // //   background-color:#ebf7ff !important;
+  // // }
+  // // .ivu-table-row td {
+  // //   height: 30px !important;
+  // //   line-height: 150%;
+  // // }
+  // // .ivu-table-cell {
+  // //   text-overflow: ellipsis;
+  // //   overflow: hidden;
+  // //   white-space: nowrap;
+  // // }
+  // .container{
+  //   position:relative;
+	//   -webkit-box-flex:1;
+	//   -webkit-flex:1;
+  // 	flex:1;
+	//   overflow:auto;
+	//  -webkit-overflow-scrolling:touch;
   // }
-  // .ivu-table-row:hover td{
-  //   background-color:#ebf7ff !important;
+  //  .wrapper {
+  //   height: 100%;
+  //   overflow-y: auto;
   // }
-  // .ivu-table-row td {
-  //   height: 30px !important;
-  //   line-height: 150%;
-  // }
-  // .ivu-table-cell {
-  //   text-overflow: ellipsis;
-  //   overflow: hidden;
-  //   white-space: nowrap;
-  // }
-  .container{
-    position:relative;
-	  -webkit-box-flex:1;
-	  -webkit-flex:1;
-  	flex:1;
-	  overflow:auto;
-	 -webkit-overflow-scrolling:touch;
+    .container {
+    position: relative;
+    height: 100%;
+    .footer-bread {
+      position: fixed;
+      left: 26%;
+      top: 10px;
+      z-index: 100;
+    }
   }
   .right{
+    top: 50px;
+    left: 57%;
     font-size: 15px;
     font-weight: bold;
     color:#5cadff;
