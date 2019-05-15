@@ -31,6 +31,7 @@ var fs = require("fs");
 var path = require("path");
 
 export default {
+  name: "file-permission",
   props: {
     pathStr: ""
   },

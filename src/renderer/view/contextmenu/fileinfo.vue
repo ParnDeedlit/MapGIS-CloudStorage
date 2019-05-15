@@ -1,68 +1,79 @@
 <template>
-  <div>
+  <Card>
+    <p slot="title">
+      <Icon type="ios-film-outline"></Icon>基本信息
+    </p>
+    <a href="#" slot="extra">
+      <Icon type="ios-loop-strong"></Icon>更新
+    </a>
     <p>
       <span class="file-title">文件名：</span>
-      <span>{{fileDetail.name}}</span>
+      <span>{{stats.name}}</span>
     </p>
     <p>
       <span class="file-title">文件类型：</span>
-      <span>{{fileDetail.type}}</span>
+      <span>{{stats.type}}</span>
     </p>
     <p>
       <span class="file-title">文件大小：</span>
-      <span>{{this.toMem(fileDetail.size) || '0Kb'}}</span>
+      <span>{{this.toMem(stats.size) || '0Kb'}}</span>
     </p>
     <p>
       <span class="file-title">文件创建时间：</span>
-      <span>{{new Date(fileDetail.birthtime).toLocaleString()}}</span>
+      <span>{{new Date(stats.birthtime).toLocaleString()}}</span>
     </p>
     <p>
       <span class="file-title">文件所在目录：</span>
-      <span>{{fileDetail.path}}</span>
+      <span>{{stats.path}}</span>
     </p>
     <p>
       <span class="file-title">文件设备ID号：</span>
-      <span>{{fileDetail.dev}}</span>
+      <span>{{stats.dev}}</span>
     </p>
     <p>
       <span class="file-title">文件的权限标志：</span>
-      <span>{{fileDetail.mode}}</span>
+      <span>{{stats.mode}}</span>
     </p>
     <p>
       <span class="file-title">文件硬连接数量：</span>
-      <span>{{fileDetail.nlink}}</span>
+      <span>{{stats.nlink}}</span>
     </p>
     <p>
       <span class="file-title">文件Indoe节点号：</span>
-      <span>{{fileDetail.ino}}</span>
+      <span>{{stats.ino}}</span>
     </p>
     <p>
       <span class="file-title">文件所有者用户ID：</span>
-      <span>{{fileDetail.uid}}</span>
+      <span>{{stats.uid}}</span>
     </p>
     <p>
       <span class="file-title">文件所有者用户组ID：</span>
-      <span>{{fileDetail.gid}}</span>
+      <span>{{stats.gid}}</span>
     </p>
-  </div>
+  </Card>
 </template>
 <script>
 var fs = require("fs");
 var path = require("path");
+import { toMem } from "@/extend/filters";
+const fsStats = fs.Stats;
+
 export default {
+  name: "file-info",
   props: {
-    file: {}
+    stats: { type: fsStats }
   },
   data() {
-    return {
-      fileDetail: this.$props.fileDetail
-    };
+    return {};
   },
   methods: {
-    show() {},
-    mounted: function() {
-      var _this = this;
-    }
+    show() {
+      //父组件改变props，子组件如果直接使用props，会触发子组件更新
+      //父组件改变props，子组件如果将props放进data中再使用，不会触发子组件更新
+      //父组件改变props，子组件如果将props放进computed中再使用，会触发子组件更新
+      //data，props和computed的变化都会触发组件更新
+    },
+    toMem: toMem
   }
 };
 </script>
