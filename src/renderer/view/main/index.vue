@@ -14,7 +14,7 @@
                         <MenuItem name="6" :to="{name:'fs'}" style="-webkit-app-region: no-drag;">文件管理</MenuItem>
                     </div>
                     <div class="right">
-                        <span  @click="loginOut(islonging)"    >退出</span>
+                        <span  @click="loginOut(islonging)">退出</span>
                          <span  @click="login()" >登录</span>
                         <span @click="appSetting"><Icon type="ios-settings-outline"/></span>
                         <span v-if="maximum" @click="restoreWindow"><Icon type="ios-contract"/></span>
@@ -41,9 +41,9 @@
 </template>
 
 <script>
-
+    import router from 'vue-router'
     import Update from "@/components/update";
-   import { Notice } from "iview";  
+    import { Notice } from "iview";
     export default {
         name: "index",
         components: {Update},
@@ -95,7 +95,7 @@
             },
     login(){
           this.$router.push("/");
-    }
+    }     
         }
     }
 </script>

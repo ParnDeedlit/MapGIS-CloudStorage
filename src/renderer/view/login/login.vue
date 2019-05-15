@@ -114,7 +114,7 @@ export default {
   data() {
     return {
       account: {
-        username: "admin",
+        username: "user1",
         password: "123456"
       },
       logining: false,

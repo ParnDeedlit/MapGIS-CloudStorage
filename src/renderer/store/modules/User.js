@@ -1,4 +1,5 @@
 import { users } from "../../mock/data/user";
+import { addRouters } from "../getters";
 
 const state = {
   name: "guest",
