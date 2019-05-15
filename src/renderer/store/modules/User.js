@@ -1,4 +1,5 @@
 import { users } from "../../mock/data/user";
+import { addRouters } from "../getters";
 
 const state = {
   name: "guest",
@@ -49,6 +50,23 @@ const actions = {
         reject(data); //尽量保证每个Promise中reject只调用一次
       }
     });
+  },
+  loginOut(context,isloging){
+    let {commit,state}=context;
+       return  new  Promise((resolve,reject)=>{
+        let data={};
+            if(isloging){
+              commit("SET_USER_NAME","");
+              commit("SET_USER_ROLE","");
+              data={username:"",role:""};
+              resolve(data);
+            }else{
+              /*commit("SET_USER_NAME",state.user.name);
+              commit("SET_USER_ROLE",state.user.role);*/
+              data={username:state.user.name,role:state.user.role};
+              reject(data);
+            }
+       })
   }
 };
 
