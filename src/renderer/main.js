@@ -20,25 +20,25 @@ if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.http = Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
-router.beforeEach((to, from, next) => {
-//   if(store.getters.role){
-//     console.log(store)
-//     const roles = store.getters.role
-//     console.log(roles)
-//     store.dispatch('routes',roles).then(() => {
-//       console.log(store.getters.addRouters)
-//       router.addRoutes(store.getters.addRouters) 
-//       console.log(router)
-//       next()
-//      }).catch(e=>{
-//        if(e){
-//         next('/') 
-//        }
-//      })
-//     }
-iView.LoadingBar.start()
-next()
-})
+// router.beforeEach((to, from, next) => {
+// //   if(store.getters.role){
+// //     console.log(store)
+// //     const roles = store.getters.role
+// //     console.log(roles)
+// //     store.dispatch('routes',roles).then(() => {
+// //       console.log(store.getters.addRouters)
+// //       router.addRoutes(store.getters.addRouters) 
+// //       console.log(router)
+// //       next()
+// //      }).catch(e=>{
+// //        if(e){
+// //         next('/') 
+// //        }
+// //      })
+// //     }
+// iView.LoadingBar.start()
+// next()
+// })
 // router.beforeEach((to, from, next) => {
 //   console.log(store)
 //   let role = store.state.user.role
@@ -49,9 +49,15 @@ next()
 //   }else{
 //     return next()
 //   }
+//   iView.LoadingBar.start()
+//   next()
+//     let role=store.state.user.role;
+//     if(to.meta.requireAuth  &&  role==="user"){
+//       alert('不可以看');
+//       next('/index')
+//     }
 // })
 
-//this.$store.state.user.role
 router.afterEach((to, from, next) => {
   iView.LoadingBar.finish()
 })

@@ -45,22 +45,7 @@
                     <thead>
                       <tr>
                         <th class="" style="width: 35%">
-                            <div class="back" @click="back" >
-                                <Icon 
-                                  type="md-arrow-back" 
-                                  size="16"
-                                  color="rgba(51, 174, 252, 0.5)"
-                                >
-                                </Icon>
-                              </div>
-                              <div class="go" @click="go" >
-                                <Icon 
-                                  type="md-arrow-forward" 
-                                  size="16"
-                                  color="rgba(51, 174, 252, 0.5)"
-                                >
-                                </Icon>
-                              </div>
+                          
                           <div class="ivu-table-cell" style=""><span>名称</span>
                           </div>
                         </th>
@@ -194,9 +179,14 @@
         </div>
       </transition>
       </col>
+<<<<<<< HEAD
       <Col span="9" class="right">
         <div> 
               <span class="permission"><file_permission :pathStr='fileDetail.path'></file_permission></span>
+=======
+      <Col>
+        <div  style="float:right;">
+>>>>>>> 8ef6f8d56fe6751ff15ae9f7488d649b9ee2de4f
               <p>
                 <span class="file-title">文件名：</span>
                 <span> {{fileDetail.name}} </span>

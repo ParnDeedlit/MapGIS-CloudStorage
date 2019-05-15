@@ -12,8 +12,7 @@ import ListOther from '@/components/menu/other';
 
 Vue.use(Router);
 
-//通用路由
-const router = new Router({
+export default new Router({
     routes: [
         {
             path: '/',
@@ -67,7 +66,9 @@ const router = new Router({
                 {
                     path: '/home/share',
                     name: 'share',
-                    components: { menu: HomeMenu, main: () => import('@/view/home/share') }
+                    components: {menu: HomeMenu, main: () => import('@/view/home/share')}, 
+                    meta:{requireAuth:true}
+
                 },
             ],
             props: { sidebar: true, role: ['admin', 'user'] }
@@ -83,10 +84,10 @@ const router = new Router({
         },
         {
             path: '/share', component: Main,
-            children: [
-                { path: '/share/index', name: 'shareSession', components: { menu: ListShare, main: () => import('@/view/share/index') } },
-                { path: '/share/friend', name: 'shareFriend', components: { menu: ListShare, main: () => import('@/view/share/friend') } },
-                { path: '/share/group', name: 'shareGroup', components: { menu: ListShare, main: () => import('@/view/share/group') } },
+            children:[
+                {path: '/share/index', name: 'shareSession', components: {menu: ListShare, main: () => import('@/view/share/index')}},
+                {path: '/share/friend', name: 'shareFriend', components: {menu: ListShare, main: () => import('@/view/share/friend')}, meta:{requireAuth:true}},
+                {path: '/share/group', name: 'shareGroup', components: {menu: ListShare, main: () => import('@/view/share/group')}},
             ],
             props: { sidebar: true, role: ['admin', 'user'] }
         },
@@ -114,10 +115,10 @@ const router = new Router({
                     path: '/wenjian/fs',
                     name: 'fs',
                     components: {
-                        menu: ListEmpty,
-                        main: () => import('@/view/wenjian/fs')
+                        menu :ListEmpty,
+                        main: ()=>import('@/view/wenjian/fs')
                     },
-                    meta: { requiresAuth: true }
+                    meta:{requireAuth:true}
                 },
                 {
                     path: '/wenjian/fs/:id',
@@ -136,41 +137,3 @@ const router = new Router({
             props: { sidebar: true }
         }]
 })
-//仅管理员可见
-/*export const adminRouter= [
-    {
-        path: '/wenjian',
-            component:Main,
-            children: [
-                {
-                    path: '/wenjian/fs',
-                    name: 'fs', 
-                    components: {
-                        menu :ListEmpty,
-                        main: ()=>import('@/view/wenjian/fs')
-                    }
-                },
-                {
-                    path: '/wenjian/fs/:id',
-                    name: 'folder',
-                    components:{
-                        menu:ListEmpty,
-                        main: ()=>import('@/view/contextmenu/folder')
-                    }
-                }
-            ],
-            props: { sidebar: false,role:'admin'}
-        }
-] 
-*/
-// router.beforeEach((to, from, next) => {
-//     //console.log(store)
-//     let role = router.props.role
-//     console.log(role)
-//     if(to.meta.requiresAuth && role ==='guest'){
-//        return next('/')
-//     }else{
-//       return next()
-//     }
-//   })
-export default router

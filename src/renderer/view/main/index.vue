@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div>
     <Layout>
       <Header class="header">
@@ -47,6 +48,44 @@
             <router-view name="main"/>
             <!-- <router-view name="filefolder"></router-view> -->
           </Content>
+=======
+    <div>
+        <Layout>
+            <Header class="header">
+                <Menu mode="horizontal" active-name="1" theme="light"
+                      style="height: 80px;background-color: #EEF0F6;padding-top: 5px;">
+                    <div class="layout-logo"></div>
+                    <div class="layout-nav">
+                        <MenuItem name="1" :to="{name:'index'}" style="-webkit-app-region: no-drag;">我的网盘</MenuItem>
+                        <MenuItem name="2" :to="{name:'listIndex'}" style="-webkit-app-region: no-drag;">传输列表</MenuItem>
+                        <MenuItem name="3" :to="{name:'shareSession'}" style="-webkit-app-region: no-drag;">好友分享</MenuItem>
+                        <MenuItem name="4" :to="{name:'functionList'}" style="-webkit-app-region: no-drag;">功能宝箱</MenuItem>
+                        <MenuItem name="5" :to="{name:'otherFilm'}" style="-webkit-app-region: no-drag;">更多资源</MenuItem>
+                        <MenuItem name="6" :to="{name:'fs'}" style="-webkit-app-region: no-drag;">文件管理</MenuItem>
+                    </div>
+                    <div class="right">
+                        <span  @click="loginOut(islonging)">退出</span>
+                         <span  @click="login()" >登录</span>
+                        <span @click="appSetting"><Icon type="ios-settings-outline"/></span>
+                        <span v-if="maximum" @click="restoreWindow"><Icon type="ios-contract"/></span>
+                        <span v-else @click="restoreWindow"><Icon type="ios-expand"/></span>
+                        <span @click="minWindow"><Icon type="md-remove"/></span>
+                        <span @click="exitApp"><Icon type="md-close"/></span>
+                    </div>
+                </Menu>
+            </Header>
+            <Layout style="margin-top: 16px;-webkit-user-select: none;">
+                <Sider :width=sidebarWith() style="background-color: #FFFFFF;">
+                    <router-view name="menu" :menuHeight="100"/>
+                </Sider>
+                <Layout style="background-color: #FFFFFF;">
+                    <Content :style="{background: '#fff'}">
+                        <router-view name="main"/>
+                        <!-- <router-view name="filefolder"></router-view> -->
+                    </Content>
+                </Layout>
+            </Layout>
+>>>>>>> 8ef6f8d56fe6751ff15ae9f7488d649b9ee2de4f
         </Layout>
       </Layout>
     </Layout>
@@ -55,6 +94,7 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import router from "vue-router";
 import Update from "@/components/update";
 import { Notice } from "iview";
@@ -98,18 +138,73 @@ export default {
           console.log("退出成功");
           Notice.open({
             title: "退出成功",
+=======
+    import router from 'vue-router'
+    import Update from "@/components/update";
+    import { Notice } from "iview";
+    export default {
+        name: "index",
+        components: {Update},
+        props: { 
+            sidebar: true 
+        },
+        data() {
+            return {
+                maximum: false,
+                sidewidth: this.sidebar? 165 : 0,
+                islonging:true
+            }
+        },
+        methods: {
+            sidebarWith(){
+                return this.sidebar? 165 : 0;
+            },
+            appSetting() {
+                this.$electron.ipcRenderer.send('setting');
+            },
+            exitApp() {
+                this.$electron.ipcRenderer.send('exitApp');
+            },
+            minWindow() {
+                this.$electron.ipcRenderer.send('minWindow');
+            },
+            restoreWindow() {
+                this.$electron.ipcRenderer.send('maximizeWindow');
+            },
+     loginOut(data){
+        this.$store
+        .dispatch("loginOut", data)
+        .then(sucess => {
+          console.log("success", sucess);
+          Notice.open({
+            title: "成功",
+>>>>>>> 8ef6f8d56fe6751ff15ae9f7488d649b9ee2de4f
             desc: JSON.stringify(sucess)
           });
           this.$router.push("/");
         })
         .catch(fail => {
+<<<<<<< HEAD
           console.log("退出失败");
           Notice.open({
             title: "退出失败",
+=======
+          console.log("fail", fail);
+          Notice.open({
+            title: "失败",
+>>>>>>> 8ef6f8d56fe6751ff15ae9f7488d649b9ee2de4f
             desc: JSON.stringify(fail)
           });
           this.$router.push("/index");
         });
+<<<<<<< HEAD
+=======
+            },
+    login(){
+          this.$router.push("/");
+    }     
+        }
+>>>>>>> 8ef6f8d56fe6751ff15ae9f7488d649b9ee2de4f
     }
   }
 }
@@ -141,6 +236,7 @@ export default {
   -webkit-app-region: no-drag;
   width: 600px;
 
+<<<<<<< HEAD
   float: left;
 }
 
@@ -150,6 +246,19 @@ export default {
   font-size: 20px;
   -webkit-app-region: no-drag;
 }
+=======
+    .right {
+        float: right;
+        margin-right: 10px;
+        font-size: 12px;
+        -webkit-app-region: no-drag;
+    }
+    
+    .right span {
+        cursor: pointer;
+        margin: 0 5px;
+    }
+>>>>>>> 8ef6f8d56fe6751ff15ae9f7488d649b9ee2de4f
 
 .right span {
   cursor: pointer;
