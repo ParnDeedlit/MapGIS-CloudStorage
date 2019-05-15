@@ -66,7 +66,9 @@ export default new Router({
                 {
                     path: '/home/share',
                     name: 'share',
-                    components: {menu: HomeMenu, main: () => import('@/view/home/share')}
+                    components: {menu: HomeMenu, main: () => import('@/view/home/share')}, 
+                    meta:{requireAuth:true}
+
                 },
             ],
             props: { sidebar: true,role:['admin','user'] }
@@ -84,7 +86,7 @@ export default new Router({
             path: '/share', component: Main,
             children:[
                 {path: '/share/index', name: 'shareSession', components: {menu: ListShare, main: () => import('@/view/share/index')}},
-                {path: '/share/friend', name: 'shareFriend', components: {menu: ListShare, main: () => import('@/view/share/friend')}},
+                {path: '/share/friend', name: 'shareFriend', components: {menu: ListShare, main: () => import('@/view/share/friend')}, meta:{requireAuth:true}},
                 {path: '/share/group', name: 'shareGroup', components: {menu: ListShare, main: () => import('@/view/share/group')}},
             ],
             props: { sidebar: true,role:['admin','user'] }
@@ -115,7 +117,8 @@ export default new Router({
                     components: {
                         menu :ListEmpty,
                         main: ()=>import('@/view/wenjian/fs')
-                    }
+                    },
+                    meta:{requireAuth:true}
                 },
                 {
                     path: '/wenjian/fs/:id',

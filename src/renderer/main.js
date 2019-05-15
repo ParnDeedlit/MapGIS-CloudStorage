@@ -22,23 +22,13 @@ Vue.http = Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
-  /*if(store.getters.role){
-    console.log(store)
-    const roles = store.getters.role
-    store.dispatch('routes',roles).then(() => {
-      console.log(store.getters.addRouters)
-      router.addRoutes(store.getters.addRouters) 
-      console.log(router)
-      next()
-     }).catch(e=>{
-       if(e){
-        next('/') 
-       }
-     })
-    }*/
   iView.LoadingBar.start()
   next()
-  
+    let role=store.state.user.role;
+    if(to.meta.requireAuth  &&  role==="user"){
+      alert('不可以看');
+      next('/index')
+    }
 })
 
 router.afterEach((to, from, next) => {

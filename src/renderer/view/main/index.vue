@@ -15,6 +15,7 @@
                     </div>
                     <div class="right">
                         <span  @click="loginOut(islonging)"    >退出</span>
+                         <span  @click="login()" >登录</span>
                         <span @click="appSetting"><Icon type="ios-settings-outline"/></span>
                         <span v-if="maximum" @click="restoreWindow"><Icon type="ios-contract"/></span>
                         <span v-else @click="restoreWindow"><Icon type="ios-expand"/></span>
@@ -91,7 +92,10 @@
           });
           this.$router.push("/index");
         });
-            }
+            },
+    login(){
+          this.$router.push("/");
+    }
         }
     }
 </script>
