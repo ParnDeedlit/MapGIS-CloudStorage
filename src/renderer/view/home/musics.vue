@@ -11,7 +11,6 @@
 <script>
     import uploadTabBar from '@/components/tabbar/uploadTabBar.vue'
     import { filetype } from "@/common/js/type";
-    import file_permission from "@/view/home/file_permission.vue"
     export default {
         name: "musics",
         components: {uploadTabBar},

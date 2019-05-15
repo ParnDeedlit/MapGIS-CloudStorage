@@ -1,8 +1,5 @@
 <template>
   <Row class="wrapper">
-      <!-- <Col span="5" class='left'>
-              <span class="permission"><file_permission :pathStr='fileDetail.path'></file_permission></span>
-      </Col> -->
       <Col span="9" class="container">
       <transition name="slide" mode="out-in">
         <div class="folder" id="folder" @contextmenu="createNewOne($route.params.id)">
@@ -113,61 +110,6 @@
               </div>
             </div>
           </div>
-          <!--右键文件属性modal-->
-          <!-- <Modal
-            title="文件详情"
-            v-model="showFileDetail"
-            class-name="vertical-center-modal"
-            width="420px"
-          >
-            <Card class="file-card">
-              <p>
-                <span class="file-title">文件名：</span>
-                <span> {{fileDetail.name}} </span>
-              </p>
-              <p>
-                <span class="file-title">文件类型：</span>
-                <span> {{fileDetail.type}} </span>
-              </p>
-              <p>
-                <span class="file-title">文件大小：</span>
-                <span> {{this.toMem(fileDetail.size) || '0Kb'}} </span>
-              </p>
-              <p>
-                <span class="file-title">文件创建时间：</span>
-                <span> {{new Date(fileDetail.birthtime).toLocaleString()}} </span>
-              </p>
-              <p>
-                <span class="file-title">文件所在目录：</span>
-                <span> {{fileDetail.path}} </span>
-              </p>
-              <p>
-                <span class="file-title">文件设备ID号：</span>
-                <span> {{fileDetail.dev}} </span>
-              </p>
-              <p>
-                <span class="file-title">文件的权限标志：</span>
-                <span> {{fileDetail.mode}} </span>
-              </p>
-              <p>
-                <span class="file-title">文件硬连接数量：</span>
-                <span> {{fileDetail.nlink}} </span>
-              </p>
-              <p>
-                <span class="file-title">文件Indoe节点号：</span>
-                <span> {{fileDetail.ino}} </span>
-              </p>
-              <p>
-                <span class="file-title">文件所有者用户ID：</span>
-                <span> {{fileDetail.uid}} </span>
-              </p>
-              <p>
-                <span class="file-title">文件所有者用户组ID：</span>
-                <span> {{fileDetail.gid}} </span>
-              </p>
-            </Card>
-          </Modal> -->
-          <!--饼状图-->
           <Modal
             title="文件磁盘分布"
             v-model="showFilePie"
@@ -179,59 +121,11 @@
         </div>
       </transition>
       </col>
-<<<<<<< HEAD
       <Col span="9" class="right">
-        <div> 
-              <span class="permission"><file_permission :pathStr='fileDetail.path'></file_permission></span>
-=======
-      <Col>
-        <div  style="float:right;">
->>>>>>> 8ef6f8d56fe6751ff15ae9f7488d649b9ee2de4f
-              <p>
-                <span class="file-title">文件名：</span>
-                <span> {{fileDetail.name}} </span>
-              </p>
-              <p>
-                <span class="file-title">文件类型：</span>
-                <span> {{fileDetail.type}} </span>
-              </p>
-              <p>
-                <span class="file-title">文件大小：</span>
-                <span> {{this.toMem(fileDetail.size) || '0Kb'}} </span>
-              </p>
-              <p>
-                <span class="file-title">文件创建时间：</span>
-                <span> {{new Date(fileDetail.birthtime).toLocaleString()}} </span>
-              </p>
-              <p>
-                <span class="file-title">文件所在目录：</span>
-                <span> {{fileDetail.path}} </span>
-              </p>
-              <p>
-                <span class="file-title">文件设备ID号：</span>
-                <span> {{fileDetail.dev}} </span>
-              </p>
-              <p>
-                <span class="file-title">文件的权限标志：</span>
-                <span> {{fileDetail.mode}} </span>
-              </p>
-              <p>
-                <span class="file-title">文件硬连接数量：</span>
-                <span> {{fileDetail.nlink}} </span>
-              </p>
-              <p>
-                <span class="file-title">文件Indoe节点号：</span>
-                <span> {{fileDetail.ino}} </span>
-              </p>
-              <p>
-                <span class="file-title">文件所有者用户ID：</span>
-                <span> {{fileDetail.uid}} </span>
-              </p>
-              <p>
-                <span class="file-title">文件所有者用户组ID：</span>
-                <span> {{fileDetail.gid}} </span>
-              </p>
-          </div>
+        <span class="permission">
+          <filePermission :pathStr='fileDetail.path'></filePermission>
+          <fileInfo :file='fileDetail'></fileInfo>
+        </span>
       </Col>
   </Row>
 </template>
@@ -239,7 +133,8 @@
 <script>
   import { mapGetters, mapMutations } from 'vuex'
   import { toMem } from '@/extend/filters'
-  import file_permission from "@/view/home/file_permission.vue"
+  import filePermission from './filepermission.vue'
+  import fileInfo from './fileinfo.vue'
   import {
     openFile,
     readFolder,
@@ -254,7 +149,7 @@
   import wmic from 'node-wmic'
   export default {
      components: {
-          file_permission
+          filePermission
       },
     computed: {
       ...mapGetters([
@@ -615,6 +510,7 @@
     }
   }
 </script>
+
 <style lang="less" scoped>
  .folder {
     height: 100%;
@@ -694,95 +590,7 @@
     overflow: hidden;
     white-space: nowrap;
   }
-  //   //position: fixed;
-  //   // z-index: 100;
-  //   // top: 80px;
-  //   // left:200px;;
-  //   // bottom: 0px;
-  //   // right: 0;
-  //   // .t-folder {
-  //   //   height: 100%; 
-  //   // }
-  // .roll{
-  //    height: 100%;
-  //    overflow-y: auto;
-  // }
-  // .back {
-  //   padding: 0 5px 0 5px;
-  //   cursor: pointer;
-  //   width: 70px;
-  //   height: 15px;
-  //   line-height: 20px;
-  //   position: absolute;
-  //   top: 20px;
-  //   z-index: 100;
-  // }
-  //  .go {
-  //   padding: 0 5px 0 5px;
-  //   cursor: pointer;
-  //   width: 70px;
-  //   height: 15px;
-  //   line-height: 20px;
-  //   position: absolute;
-  //   top: 20px;
-  //   margin-left: 30px;
-  //   z-index: 100;
-  // }
-  // // .img-folder {
-  // //   width: 16px !important;
-  // //   height: 16px !important;
-  // // }
-  // // .vertical-center-modal{
-  // //   display: flex;
-  // //   align-items: center;
-  // //   justify-content: center;
 
-  // //   .ivu-modal{
-  // //     top: 0;
-  // //   }
-  // // }
-  // // .file-card {
-  // //   box-shadow: 0 1px 6px rgba(0,0,0,.2);
-  // //   border-color: #eee;
-  // //   p {
-  // //     padding-bottom: 5px;
-  // //   }
-  // //   .file-title {
-  // //     display: inline-block;
-  // //     width: 150px;
-  // //     text-align: right;
-  // //   }
-  // // }
-  // // .slide-enter-active, .slide-leave-active {
-  // //   transition: opacity .4s;
-  // // }
-  // // .slide-enter, .slide-leave {
-  // //   opacity: 0;
-  // // }
-  // // .ivu-table-row:hover td{
-  // //   background-color:#ebf7ff !important;
-  // // }
-  // // .ivu-table-row td {
-  // //   height: 30px !important;
-  // //   line-height: 150%;
-  // // }
-  // // .ivu-table-cell {
-  // //   text-overflow: ellipsis;
-  // //   overflow: hidden;
-  // //   white-space: nowrap;
-  // // }
-  // .container{
-  //   position:relative;
-	//   -webkit-box-flex:1;
-	//   -webkit-flex:1;
-  // 	flex:1;
-	//   overflow:auto;
-	//  -webkit-overflow-scrolling:touch;
-  // }
-  //  .wrapper {
-  //   height: 100%;
-  //   overflow-y: auto;
-  // }
     .container {
     position: relative;
     height: 100%;
