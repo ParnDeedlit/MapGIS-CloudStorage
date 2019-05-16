@@ -19,7 +19,7 @@
               <div class="t-folder ivu-table-wrapper">
                 <div class="ivu-table ivu-table-small">
                   <div class="ivu-table-header">
-                    <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
+                    <table cellspacing="0" cellpadding="0" border="0" style="position:fixed;display:table;table-layout:fixed;width:62.6%;">
                       <thead>
                         <tr>
                            <th class style="width: 35%">
@@ -511,63 +511,66 @@ export default {
   width: 100%;
   overflow-y: scroll;
   z-index: 100;
+  margin-top: -18px;
 }
-// .go .back {
-//   padding: 0 5px 0 5px;
-//   cursor: pointer;
-//   width: 20px;
-//   z-index: 100;
-// }
-// .img-folder {
-//   width: 16px !important;
-//   height: 16px !important;
-// }
+.go .back {
+  padding: 0 5px 0 5px;
+  cursor: pointer;
+  width: 20px;
+  z-index: 100;
+}
+.img-folder {
+  width: 16px !important;
+  height: 16px !important;
+}
 
-// .vertical-center-modal {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
+.vertical-center-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-//   .ivu-modal {
-//     top: 0;
-//   }
-// }
+  .ivu-modal {
+    top: 0;
+  }
+}
 
-// .file-card {
-//   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
-//   border-color: #eee;
-//   p {
-//     padding-bottom: 5px;
-//   }
-//   .file-title {
-//     display: inline-block;
-//     width: 150px;
-//     text-align: right;
-//   }
-// }
+.file-card {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+  border-color: #eee;
+  p {
+    padding-bottom: 5px;
+  }
+  .file-title {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+  }
+}
+.ivu-table-header{
+  margin-top: -1px;
+}
+.slide-enter-active,
+.slide-leave-active {
+  transition: opacity 0.4s;
+}
+.slide-enter,
+.slide-leave {
+  opacity: 0;
+}
 
-// .slide-enter-active,
-// .slide-leave-active {
-//   transition: opacity 0.4s;
-// }
-// .slide-enter,
-// .slide-leave {
-//   opacity: 0;
-// }
-
-// .ivu-table-row:hover td {
-//   background-color: #ebf7ff !important;
-// }
-// .ivu-table-row td {
-//   height: 30px !important;
-//   line-height: 150%;
-// }
-// .ivu-table-cell {
-//   text-overflow: ellipsis;
-//   overflow: hidden;
-//   white-space: nowrap;
+.ivu-table-row:hover td {
+  background-color: #ebf7ff !important;
+}
+.ivu-table-row td {
+  height: 30px !important;
+  line-height: 150%;
+}
+.ivu-table-cell {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   
-// }
+}
 .table{
     table-layout: fixed;
 }
