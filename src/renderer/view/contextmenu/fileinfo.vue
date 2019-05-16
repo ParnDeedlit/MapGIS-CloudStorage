@@ -3,9 +3,6 @@
     <p slot="title">
       <Icon type="ios-film-outline"></Icon>基本信息
     </p>
-    <a href="#" slot="extra">
-      <Icon type="ios-loop-strong"></Icon>更新
-    </a>
     <p>
       <span class="file-title">文件名：</span>
       <span>{{stats.name}}</span>
@@ -78,12 +75,4 @@ export default {
 };
 </script>
 <style scoped>
-.permiss {
-  width: 100%;
-  height: 100%;
-  border-right: 1px solid #dddfe1;
-  font-size: 15px;
-  font-weight: bold;
-  color: #5cadff;
-}
 </style>

@@ -1,10 +1,9 @@
 <template>
+ <Card>
+    <div slot="title">
+      <Icon type="ios-warning" /></Icon>相关权限
+    </div>
   <div>
-    <!-- <Card class="card-disk">
-      <div class="head-disk">
-        <img :src="imgDisk" class="img-disk">
-    </div>-->
-    <button type="primary" @click="show">显示</button>
     <div class="permiss">
       <label>mode：{{mode}}</label>
       <p></p>
@@ -25,6 +24,7 @@
       <label>拥有者写权限: {{ownerWrite}}</label>
     </div>
   </div>
+</Card>
 </template>
 <script>
 var fs = require("fs");
@@ -33,11 +33,10 @@ var path = require("path");
 export default {
   name: "file-permission",
   props: {
-    pathStr: ""
+    pathStr:''
   },
   data() {
     return {
-      size: "",
       mode: "",
       otherseXecute: "",
       othersWrite: "",
@@ -51,14 +50,14 @@ export default {
       file: "",
       directory: "",
       filetype: ""
+      //folk:{}
     };
   },
-  methods: {
-    show() {
-      var _this = this;
+  watch: {
+    pathStr:function(){
+     var _this = this;
       fs.stat(String(this.$props.pathStr), function(err, stats) {
         if (!err) {
-          (_this.size = String(stats["size"])),
             (_this.mode = String(stats["mode"])),
             (_this.otherseXecute = String(stats["mode"] & 1 ? "x" : "-")),
             (_this.othersWrite = String(stats["mode"] & 2 ? "w" : "-")),
@@ -68,19 +67,32 @@ export default {
             (_this.groupRead = String(stats["mode"] & 40 ? "r" : "-")),
             (_this.ownereXecute = String(stats["mode"] & 100 ? "x" : "-")),
             (_this.ownerWrite = String(stats["mode"] & 200 ? "w" : "-")),
-            (_this.ownerRead = String(stats["mode"] & 400 ? "r" : "-"));
-          //_this.file = String(stats['mode']&100000?'f':'-'),
-          //_this.directory = String(stats['mode']&40000?'d':'-')
-          //_this.filetype = path.extname(String(_this.$props.pathStr))
+            (_this.ownerRead = String(stats["mode"] & 400 ? "r" : "-"))
         }
-      });
+      })
     },
-    mounted: function() {
-      var _this = this;
-      _this.show();
-    }
   }
-};
+//   computed: {
+//     permission:function(){
+//       var _this = this;
+//      fs.stat(String(this.$props.pathStr), function(err, stats){
+//          if (!err) {
+//             (_this.folk.mode = String(stats["mode"])),
+//             (_this.folk.otherseXecute = String(stats["mode"] & 1 ? "x" : "-")),
+//             (_this.folk.othersWrite = String(stats["mode"] & 2 ? "w" : "-")),
+//             (_this.folk.othersRead = String(stats["mode"] & 4 ? "r" : "-")),
+//             (_this.folk.groupeXecute = String(stats["mode"] & 10 ? "x" : "-")),
+//             (_this.folk.groupWrite = String(stats["mode"] & 20 ? "w" : "-")),
+//             (_this.folk.groupRead = String(stats["mode"] & 40 ? "r" : "-")),
+//             (_this.folk.ownereXecute = String(stats["mode"] & 100 ? "x" : "-")),
+//             (_this.folk.ownerWrite = String(stats["mode"] & 200 ? "w" : "-")),
+//             (_this.folk.ownerRead = String(stats["mode"] & 400 ? "r" : "-"))
+//          }
+//     })
+//     return this.permission = this.folk
+//     } 
+//   }
+}
 </script>
 
 <style scoped>
@@ -90,6 +102,6 @@ export default {
   border-right: 1px solid #dddfe1;
   font-size: 15px;
   font-weight: bold;
-  color: #5cadff;
+  color: #ed4014;
 }
 </style>

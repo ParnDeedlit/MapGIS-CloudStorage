@@ -3,17 +3,7 @@
     <Row :gutter="16">
       <i-col span="16">
         <!-- <transition name="slide" mode="out-in"> -->
-        <Row>
-          <i-col span="1">
-            <div class="back" @click="back">
-              <Icon type="md-arrow-back" size="28" color="rgba(51, 174, 252, 0.5)"></Icon>
-            </div>
-          </i-col>
-          <i-col span="1">
-            <div class="go" @click="go">
-              <Icon type="md-arrow-forward" size="28" color="rgba(51, 174, 252, 0.5)"></Icon>
-            </div>
-          </i-col>
+        <Row> 
           <i-col span="10">
             <!--文件重命名dialog-->
             <Modal title="重命名" v-model="show" @on-ok="changeFileName">
@@ -32,11 +22,13 @@
                     <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
                       <thead>
                         <tr>
-                          <th class style="width: 35%">
+                           <th class style="width: 35%">
                             <div class="ivu-table-cell" style>
-                              <span>名称</span>
+                              <span @click="back">
+                              <Icon type="ios-arrow-back" size="25"></Icon>名称</span>
                             </div>
                           </th>
+                        
                           <th class style="width: 30%">
                             <div class="ivu-table-cell">
                               <span>修改时间</span>
@@ -57,7 +49,7 @@
                     </table>
                   </div>
                   <div class="ivu-table-body">
-                    <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
+                    <table  class="table" cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
                       <tbody class="ivu-table-tbody">
                         <tr
                           class="ivu-table-row"
@@ -111,7 +103,7 @@
           <file-permission :pathStr="fileDetail.path"></file-permission>
         </Row>
         <Row>
-          <file-info v-bind:stats="fileDetail"></file-info>
+          <file-info :stats="fileDetail"></file-info>
         </Row>
       </i-col>
     </Row>
@@ -520,60 +512,63 @@ export default {
   overflow-y: scroll;
   z-index: 100;
 }
-.go .back {
-  padding: 0 5px 0 5px;
-  cursor: pointer;
-  width: 20px;
-  z-index: 100;
-}
+// .go .back {
+//   padding: 0 5px 0 5px;
+//   cursor: pointer;
+//   width: 20px;
+//   z-index: 100;
+// }
+// .img-folder {
+//   width: 16px !important;
+//   height: 16px !important;
+// }
 
-.img-folder {
-  width: 16px !important;
-  height: 16px !important;
-}
+// .vertical-center-modal {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
 
-.vertical-center-modal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+//   .ivu-modal {
+//     top: 0;
+//   }
+// }
 
-  .ivu-modal {
-    top: 0;
-  }
-}
+// .file-card {
+//   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+//   border-color: #eee;
+//   p {
+//     padding-bottom: 5px;
+//   }
+//   .file-title {
+//     display: inline-block;
+//     width: 150px;
+//     text-align: right;
+//   }
+// }
 
-.file-card {
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
-  border-color: #eee;
-  p {
-    padding-bottom: 5px;
-  }
-  .file-title {
-    display: inline-block;
-    width: 150px;
-    text-align: right;
-  }
-}
+// .slide-enter-active,
+// .slide-leave-active {
+//   transition: opacity 0.4s;
+// }
+// .slide-enter,
+// .slide-leave {
+//   opacity: 0;
+// }
 
-.slide-enter-active,
-.slide-leave-active {
-  transition: opacity 0.4s;
-}
-.slide-enter,
-.slide-leave {
-  opacity: 0;
-}
-
-.ivu-table-row:hover td {
-  background-color: #ebf7ff !important;
-}
-.ivu-table-row td {
-  height: 30px !important;
-  line-height: 150%;
-}
-.ivu-table-cell {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+// .ivu-table-row:hover td {
+//   background-color: #ebf7ff !important;
+// }
+// .ivu-table-row td {
+//   height: 30px !important;
+//   line-height: 150%;
+// }
+// .ivu-table-cell {
+//   text-overflow: ellipsis;
+//   overflow: hidden;
+//   white-space: nowrap;
+  
+// }
+.table{
+    table-layout: fixed;
 }
 </style>
