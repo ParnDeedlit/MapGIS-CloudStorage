@@ -18,7 +18,15 @@
             <MenuItem name="6" :to="{name:'fs'}" style="-webkit-app-region: no-drag;">文件管理</MenuItem>
           </div>
           <div class="right">
-            <span @click="loginOut(isLogin) " style="font-size:15px">退出登录</span>
+            <Dropdown trigger="click">
+              <a href="javascript:void(0)" style="font-size:15px;  color: black">
+                登录
+                <Icon type="ios-arrow-down"></Icon>
+              </a>
+              <DropdownMenu slot="list" >
+                <DropdownItem ><span @click="loginOut(isLogin) ">退出登录</span></DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
             <span @click="appSetting">
               <Icon type="ios-settings-outline"/>
             </span>
@@ -152,5 +160,6 @@ export default {
 
 .right span:hover {
   color: #e4393c;
+
 }
 </style>

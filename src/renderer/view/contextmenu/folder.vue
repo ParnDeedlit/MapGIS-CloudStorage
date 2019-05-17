@@ -48,6 +48,7 @@
                       </thead>
                     </table>
                   </div>
+
                   <div class="ivu-table-body">
                     <table  class="table" cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
                       <tbody class="ivu-table-tbody">
@@ -232,15 +233,6 @@ export default {
         });
       } else {
         this.$router.back(-1);
-      }
-    },
-    go() {
-      if (this.$route.params.id.length <= 4) {
-        this.$router.replace({
-          path: "/wenjian/fs"
-        });
-      } else {
-        history.go(1);
       }
     },
     async forwardFolder(row) {
@@ -454,15 +446,6 @@ export default {
         }
       });
 
-      /* let fileInfoMenu = new MenuItem({
-        label: "查看文件信息",
-        accelerator: "CmdOrCtrl+J",
-        click() {
-          me.fileDetail = Object.assign({}, row);
-          me.showFileDetail = true;
-        }
-      }); */
-
       let filePieMenu = new MenuItem({
         label: "文件磁盘分布",
         accelerator: "CmdOrCtrl+T",
@@ -509,11 +492,11 @@ export default {
 .folder {
   height: 75vh;
   width: 100%;
-  overflow-y: scroll;
+  overflow: auto;
   z-index: 100;
   margin-top: -18px;
 }
-.go .back {
+.back {
   padding: 0 5px 0 5px;
   cursor: pointer;
   width: 20px;
