@@ -63,6 +63,7 @@
     "iconv-lite": "^0.4.24",
     "iview": "^3.4.1",
     "node-wmic": "^2.0.0",
+    "simple-uploader.js": "^0.5.1",
     "update-electron-app": "^1.3.0",
     "v-charts": "^1.19.0"
   },
