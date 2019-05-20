@@ -9,13 +9,12 @@ import 'iview/dist/styles/iview.css';
 import VCharts from 'v-charts'
 import extend from './extend'
 import uploader from "./components/upload";
+import echarts from 'echarts'
 
 Vue.use(iView)
 Vue.use(VCharts)
 Vue.use(extend)
 Vue.use(uploader);
-
-import echarts from 'echarts'
 
 Vue.prototype.$echarts = echarts;
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))

@@ -20,7 +20,7 @@ export default {
     return {
       options: {
         // https://github.com/simple-uploader/Uploader/tree/develop/samples/Node.js
-        target: "http://localhost:8898/upload",
+        target: "http://localhost:8877/upload",
         testChunks: false
       },
       attrs: {

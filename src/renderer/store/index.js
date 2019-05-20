@@ -8,6 +8,7 @@ import createLogger from "vuex/dist/logger";
 import login from "./modules/login";
 import count from "./modules/Counter";
 import user from "./modules/user";
+import upload from "./modules/Upload";
 
 Vue.use(Vuex);
 
@@ -21,7 +22,8 @@ export default new Vuex.Store({
   modules: {
     login,
     count,
-    user
+    user,
+    upload
   },
   strict: debug,
   plugins: debug ? [createLogger()] : []
