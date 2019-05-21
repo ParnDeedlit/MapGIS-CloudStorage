@@ -1,52 +1,30 @@
 <template>
   <div class="content">
-    <uploader :options="options" class="uploader-example">
-      <uploader-unsupport></uploader-unsupport>
-      <uploader-drop>
-        <p>拖拽文件到此处上传</p>
-        <uploader-btn>选择文件</uploader-btn>
-        <uploader-btn :attrs="attrs">选择图片</uploader-btn>
-        <uploader-btn :directory="true">选择文件夹</uploader-btn>
-      </uploader-drop>
-      <uploader-list></uploader-list>
-    </uploader>
+    <div v-if="visible"></div>
   </div>
 </template>
 
 <script>
 export default {
   name: "uploads",
+  props: {
+    upload: false
+  },
   data() {
-    return {
-      options: {
-        // https://github.com/simple-uploader/Uploader/tree/develop/samples/Node.js
-        target: "http://localhost:8877/upload",
-        testChunks: false
-      },
-      attrs: {
-        accept: "image/*"
+    return {};
+  },
+  computed: {
+    visible: function() {
+      if (this.upload) {
+        this.$store.commit("showUploader");
+      } else {
+        this.$store.commit("hideUploader");
       }
-    };
+      return this.upload;
+    }
   }
 };
 </script>
 
 <style scoped>
-.uploader-example {
-  width: 97%;
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  font-size: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-}
-.uploader-example .uploader-btn {
-  margin-right: 4px;
-}
-.uploader-example .uploader-list {
-  max-height: 440px;
-  overflow: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
 </style>

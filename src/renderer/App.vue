@@ -11,8 +11,22 @@ import globalUploader from "@/components/upload/GlobalUploader.vue";
 
 export default {
   name: "mapgis-clouddisk",
+  props: {
+    upload: false,
+    download: false
+  },
   components: {
     globalUploader
+  },
+  computed: {
+    hideGlobal() {
+      console.log("App-computed", this.upload);
+      if (this.upload) {
+        this.$store.commit("showUploader");
+      } else {
+        this.$store.commit("hideUploader");
+      }
+    }
   }
 };
 </script>

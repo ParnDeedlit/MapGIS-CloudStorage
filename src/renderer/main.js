@@ -21,12 +21,16 @@ if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.http = Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
-  router.beforeEach((to, from, next) => {
-iView.LoadingBar.start()
- next()
- }) 
+router.beforeEach((to, from, next) => {
+  iView.LoadingBar.start()
+  next()
+})
 
 router.afterEach((to, from, next) => {
+  //console.log("router", to, from, next);
+  if (from && from.name && from.name == "listUploads") {
+    store.commit("hideUploader");
+  }
   iView.LoadingBar.finish()
 })
 

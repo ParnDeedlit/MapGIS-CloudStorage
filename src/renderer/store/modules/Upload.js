@@ -4,10 +4,24 @@ const EVENT_FILE_ADDED = "fileAdded";
 const EVENT_FILE_SUCCESS = "fileSuccess";
 
 const state = {
+    count: 0,
+    visible: false,
     param: {}
 };
 
 const mutations = {
+    hideUploader(state) {
+        state.visible = false;
+    },
+    showUploader(state) {
+        state.visible = true;
+    },
+    addUploaderCount(state) {
+        ++state.count;
+    },
+    subUploaderCount(state) {
+        --state.count;
+    },
     openUploader(state, payload) {
         state.param = payload.param;
     },

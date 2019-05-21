@@ -1,5 +1,5 @@
 <template>
-  <div id="global-uploader">
+  <div id="global-uploader" ref="uploadDiv">
     <span class="unvisible-uploader">{{params}}</span>
     <!-- 上传 -->
     <uploader
@@ -16,27 +16,32 @@
 
       <uploader-btn id="global-uploader-btn" :attrs="attrs" ref="uploadBtn">选择文件</uploader-btn>
 
-      <uploader-list v-show="panelShow">
-        <div class="file-panel" slot-scope="props" :class="{'collapse': collapse}">
+      <uploader-list v-show="visible">
+        <div class="file-panel" slot-scope="props" id="global-uploader-list">
           <div class="file-title">
             <h2>文件列表</h2>
             <div class="operate">
               <ButtonGroup>
                 <i-button
-                  @click="fileListShow"
+                  @click="handleAllStart"
                   type="default"
-                  shape="circle"
+                  title="全部开始"
                   size="small"
-                  :title="collapse ? '展开':'折叠' "
-                  :icon="collapse ? 'md-arrow-round-down' : 'md-arrow-round-up'"
+                  icon="md-play"
                 ></i-button>
                 <i-button
-                  @click="close"
+                  @click="handleAllPause"
                   type="default"
-                  title="关闭"
-                  shape="circle"
+                  title="全部暂停"
                   size="small"
-                  icon="md-close"
+                  icon="md-pause"
+                ></i-button>
+                <i-button
+                  @click="handleAllCancel"
+                  type="default"
+                  title="全部取消"
+                  size="small"
+                  icon="md-power"
                 ></i-button>
               </ButtonGroup>
             </div>
@@ -67,10 +72,6 @@ import { ACCEPT_CONFIG } from "./globalConfig";
 import Bus from "./globalBus";
 import SparkMD5 from "spark-md5";
 
-// 这两个是我自己项目中用的，请忽略
-/* import { Ticket } from "@/assets/js/utils";
-import api from "@/api"; */
-
 export default {
   data() {
     return {
@@ -97,8 +98,7 @@ export default {
       attrs: {
         /*  accept: ACCEPT_CONFIG.getAll() */
       },
-      panelShow: false, //选择文件后，展示上传panel
-      collapse: false
+      panelShow: false //选择文件后，展示上传panel
     };
   },
   created() {},
@@ -109,18 +109,26 @@ export default {
       return this.$refs.uploader.uploader;
     },
     params() {
-      console.log("computed", this.$store.state.upload.param);
+      //console.log("computed", this.$store.state.upload.param);
       if (this.$refs.uploadBtn) {
         document.getElementById("global-uploader-btn").click();
       }
       return this.$store.state.upload.param;
+    },
+    visible() {
+      if (this.$refs.uploadDiv) {
+        if (this.$store.state.upload.visible) {
+          document.getElementById("global-uploader").style.zIndex = 100;
+        } else {
+          document.getElementById("global-uploader").style.zIndex = -100;
+        }
+      }
+      return this.$store.state.upload.visible;
     }
   },
   methods: {
     onFileAdded(file) {
-      //Bus.$emit("fileAdded");
-      this.panelShow = true;
-
+      this.$store.commit("addUploaderCount");
       this.computeMD5(file);
     },
     onFileProgress(rootFile, file, chunk) {
@@ -133,7 +141,9 @@ export default {
       );
     },
     onFileSuccess(rootFile, file, response, chunk) {
-      console.log("onFileSuccess", response);
+      this.$store.commit("subUploaderCount");
+      this.$store.commit("addCompleteCount");
+      this.$store.commit("addCompleteResult", { file: file });
       let res = JSON.parse(response);
 
       // 服务器自定义的错误，这种错误是Uploader无法拦截的
@@ -214,20 +224,16 @@ export default {
       };
     },
 
-    fileListShow() {
-      //let $list = $("#global-uploader .file-list");
-      let list = document.getElementsByClassName("file-list");
-
-      if (this.collapse) {
-        this.collapse = false;
-      } else {
-        this.collapse = true;
-      }
-    },
-    close() {
+    handleAllStart() {
       this.uploader.cancel();
+    },
 
-      this.panelShow = false;
+    handleAllPause() {
+      this.uploader.cancel();
+    },
+
+    handleAllCancel() {
+      this.uploader.cancel();
     },
 
     error(msg) {
@@ -250,12 +256,14 @@ export default {
 <style scoped lang="less">
 #global-uploader {
   position: fixed;
-  z-index: 20;
+  width: calc(100vw - 190px);
+  height: calc(100vh - 90px);
+  z-index: -100;
   right: 15px;
-  bottom: 15px;
+  top: 90px;
 
   .uploader-app {
-    width: 580px;
+    width: 100%;
   }
 
   .file-panel {
@@ -263,6 +271,7 @@ export default {
     border: 1px solid #e2e2e2;
     border-radius: 7px 7px 0 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 100;
 
     .file-title {
       display: flex;
@@ -279,7 +288,7 @@ export default {
 
     .file-list {
       position: relative;
-      height: 240px;
+      height: calc(100vh - 140px);
       overflow-x: hidden;
       overflow-y: auto;
       background-color: #fff;
@@ -289,11 +298,14 @@ export default {
         background-color: #fff;
       }
     }
+  }
 
-    &.collapse {
-      .file-title {
-        background-color: #e7ecf2;
-      }
+  .visible {
+    z-index: 100;
+    right: 15px;
+    top: 90px;
+    .file-title {
+      background-color: #e7ecf2;
     }
   }
 
