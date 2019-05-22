@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import axios from 'axios'
 
+import 'iview/dist/styles/iview.css';
+
 import App from './App'
 import router from './router'
 import store from './store'
 import iView from 'iview';
-import 'iview/dist/styles/iview.css';
 import VCharts from 'v-charts'
 import extend from './extend'
-import  "./assets/iconfont.js" 
-import  icon  from  "./components/icon/iconfront.vue"  
+import icon from "./components/icon/iconfront.vue"
 import uploader from "./components/upload";
 import echarts from 'echarts'
 
