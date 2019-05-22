@@ -8,11 +8,13 @@ import iView from 'iview';
 import 'iview/dist/styles/iview.css';
 import VCharts from 'v-charts'
 import extend from './extend'
+import  "./assets/iconfont.js" 
+import  icon  from  "./components/icon/iconfront.vue"  
 
 Vue.use(iView)
 Vue.use(VCharts)
 Vue.use(extend)
-
+Vue.component('icon', icon);
 import echarts from 'echarts'
 
 Vue.prototype.$echarts = echarts;
