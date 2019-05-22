@@ -6,6 +6,7 @@ const EVENT_FILE_SUCCESS = "fileSuccess";
 const state = {
     count: 0,
     visible: false,
+    current: [],
     param: {}
 };
 
@@ -25,11 +26,20 @@ const mutations = {
     openUploader(state, payload) {
         state.param = payload.param;
     },
-    fileAdded(state, payload) {
-
+    addCurrentFile(state, payload) {
+        //state.current.push(payload.file);
     },
-    fileSuccess(state, payload) {
-
+    deleteCurrentFile(state, payload) {
+        let file = payload.file;
+        state.current = state.current.filter(item => {
+            let { uniqueIdentifier, name } = item;
+            if (file.name == name && file.uniqueIdentifier == uniqueIdentifier) {
+                console.log("find file", file);
+                return;
+            } else {
+                return item;
+            }
+        });
     }
 };
 

@@ -122,9 +122,6 @@ export default {
         });
     }
   },
-  watch: {
-    count: {}
-  },
   computed: {
     count() {
       if (!this.$store.state.upload.count) return 0;

@@ -64,34 +64,36 @@
 <script>
 /**
  *   全局上传插件
- *   调用方法：Bus.$emit('openUploader', {}) 打开文件选择框，参数为需要传递的额外参数
+ *   调用方法：Bus.$emit('openUploader', {}) 打开文件选择框，参数为需要传递的额外参数`
  *   监听函数：Bus.$on('fileAdded', fn); 文件选择后的回调
  *            Bus.$on('fileSuccess', fn); 文件上传成功的回调
  */
 import { ACCEPT_CONFIG } from "./globalConfig";
-import Bus from "./globalBus";
 import SparkMD5 from "spark-md5";
+
+let globalCurrentFiles = [];
 
 export default {
   data() {
     return {
       options: {
-        target: "http://localhost:8877/upload", //api.simpleUploadURL,
-        chunkSize: "2048000",
+        target: "http://192.168.91.121:8082/boot/uploader/chunk", //"http://localhost:8877/uploader",
+        chunkSize: 2 * 1024 * 1024,
         fileParameterName: "file",
         maxChunkRetries: 3,
         testChunks: true, //是否开启服务器分片校验
         // 服务器分片校验函数，秒传及断点续传基础
         checkChunkUploadedByResponse: function(chunk, message) {
-          let objMessage = JSON.parse(message);
+          console.log("checkChunkUploadedByResponse", message);
+          /* let objMessage = JSON.parse(message);
           if (objMessage.skipUpload) {
             return true;
           }
 
-          return (objMessage.uploaded || []).indexOf(chunk.offset + 1) >= 0;
+          return (objMessage.uploaded || []).indexOf(chunk.offset + 1) >= 0; */
         },
         headers: {
-          /* Authorization: Ticket.get() && "Bearer " + Ticket.get().access_token */
+          //Authorization: Ticket.get() && "Bearer " + Ticket.get().access_token
         },
         query() {}
       },
@@ -101,7 +103,9 @@ export default {
       panelShow: false //选择文件后，展示上传panel
     };
   },
-  created() {},
+  created() {
+    self = this;
+  },
   mounted() {},
   computed: {
     //Uploader实例
@@ -129,6 +133,11 @@ export default {
   methods: {
     onFileAdded(file) {
       this.$store.commit("addUploaderCount");
+      this.$store.commit("addCurrentFile", { file: file });
+
+      console.log("onFileAdded", this);
+
+      globalCurrentFiles.push(file);
       this.computeMD5(file);
     },
     onFileProgress(rootFile, file, chunk) {
@@ -141,19 +150,22 @@ export default {
       );
     },
     onFileSuccess(rootFile, file, response, chunk) {
-      this.$store.commit("subUploaderCount");
-      this.$store.commit("addCompleteCount");
-      this.$store.commit("addCompleteResult", { file: file });
-      let res = JSON.parse(response);
+      //console.log("onFileSuccess", file);
+      self.$store.commit("subUploaderCount");
+      self.$store.commit("deleteCurrentFile", { file: file });
+      self.$store.commit("addCompleteCount");
+      self.$store.commit("addCompleteResult", { file: file });
+      //let res = JSON.parse(response);
 
       // 服务器自定义的错误，这种错误是Uploader无法拦截的
-      if (!res.result) {
+      /*       if (!res.result) {
         this.$message({ message: res.message, type: "error" });
         return;
-      }
+      } */
 
       // 如果服务端返回需要合并
       if (res.needMerge) {
+        console.log("need meger", res);
         /* api
           .mergeSimpleUpload({
             tempName: res.tempName,
@@ -168,7 +180,6 @@ export default {
 
         // 不需要合并 */
       } else {
-        //Bus.$emit("fileSuccess");
         console.log("上传成功");
       }
     },
@@ -214,7 +225,8 @@ export default {
         );
 
         file.uniqueIdentifier = md5;
-        file.resume();
+        file.pause();
+        //file.resume();
       };
 
       fileReader.onerror = function() {
@@ -225,29 +237,38 @@ export default {
     },
 
     handleAllStart() {
-      this.uploader.cancel();
+      globalCurrentFiles.forEach(file => {
+        file.resume();
+      });
     },
 
     handleAllPause() {
-      this.uploader.cancel();
+      globalCurrentFiles.forEach(file => {
+        file.pause();
+      });
     },
 
     handleAllCancel() {
+      globalCurrentFiles.forEach(file => {
+        this.$store.commit("subUploaderCount");
+        file.cancel();
+      });
+      globalCurrentFiles = [];
       this.uploader.cancel();
     },
 
     error(msg) {
-      this.$notify({
+      /* this.$notify({
         title: this.$t("c.false"),
         message: msg,
         type: "error",
         duration: 2000
-      });
+      }); */
     }
   },
   watch: {},
   destroyed() {
-    Bus.$off("openUploader");
+    //Bus.$off("openUploader");
   },
   components: {}
 };

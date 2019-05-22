@@ -2,45 +2,32 @@
   <div class="uploadTabBar">
     <ul>
       <li key="upload">
-        <!-- <uploader :options="options" class="uploader-example">
-          <uploader-unsupport></uploader-unsupport>
-          <uploader-btn>选择文件</uploader-btn>
-        </uploader>-->
-        <i-button @click="uploadFile">上传</i-button>
+        <i-button type="primary" @click="uploadFile">上传</i-button>
       </li>
       <li key="upload-multi">
-        <Upload action="http://localhost:8877/upload">
-          <i-button multiple type="ghost" icon="ios-cloud-upload-outline">批量上传</i-button>
-        </Upload>
+        <i-button multiple icon="ios-cloud-upload-outline">批量上传</i-button>
       </li>
       <li key="download">
-        <i-button size="small" type="ghost" icon="ios-cloud-download-outline">下载</i-button>
+        <i-button size="small" icon="ios-cloud-download-outline">下载</i-button>
       </li>
       <li key="share">
-        <i-button size="small" type="md-share" icon="md-share">分享</i-button>
+        <i-button size="small" icon="md-share">分享</i-button>
       </li>
       <li key="delete">
-        <i-button size="small" type="ghost" icon="ios-trash">删除</i-button>
+        <i-button size="small" icon="ios-trash">删除</i-button>
       </li>
       <li key="new-folder">
-        <i-button size="small" type="ghost" icon="md-add">新建文件夹</i-button>
+        <i-button size="small" icon="md-add">新建文件夹</i-button>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
 export default {
   name: "uploadTabBar",
   data() {
-    return {
-      options: {
-        // https://github.com/simple-uploader/Uploader/tree/develop/samples/Node.js
-        target: "http://localhost:8877/upload",
-        testChunks: false
-      }
-    };
+    return {};
   },
   methods: {
     uploadFile() {
@@ -53,8 +40,7 @@ export default {
         }
       });
     }
-  },
-  computed: mapState({ param: state => state.param })
+  }
 };
 </script>
 <style scoped>
