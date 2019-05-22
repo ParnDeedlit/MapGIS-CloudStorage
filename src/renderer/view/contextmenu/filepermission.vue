@@ -50,7 +50,6 @@ export default {
       file: "",
       directory: "",
       filetype: ""
-      //folk:{}
     };
   },
   watch: {
@@ -72,26 +71,6 @@ export default {
       })
     },
   }
-//   computed: {
-//     permission:function(){
-//       var _this = this;
-//      fs.stat(String(this.$props.pathStr), function(err, stats){
-//          if (!err) {
-//             (_this.folk.mode = String(stats["mode"])),
-//             (_this.folk.otherseXecute = String(stats["mode"] & 1 ? "x" : "-")),
-//             (_this.folk.othersWrite = String(stats["mode"] & 2 ? "w" : "-")),
-//             (_this.folk.othersRead = String(stats["mode"] & 4 ? "r" : "-")),
-//             (_this.folk.groupeXecute = String(stats["mode"] & 10 ? "x" : "-")),
-//             (_this.folk.groupWrite = String(stats["mode"] & 20 ? "w" : "-")),
-//             (_this.folk.groupRead = String(stats["mode"] & 40 ? "r" : "-")),
-//             (_this.folk.ownereXecute = String(stats["mode"] & 100 ? "x" : "-")),
-//             (_this.folk.ownerWrite = String(stats["mode"] & 200 ? "w" : "-")),
-//             (_this.folk.ownerRead = String(stats["mode"] & 400 ? "r" : "-"))
-//          }
-//     })
-//     return this.permission = this.folk
-//     } 
-//   }
 }
 </script>
 

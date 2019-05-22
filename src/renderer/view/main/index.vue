@@ -11,14 +11,29 @@
           <div class="layout-logo"></div>
           <div class="layout-nav">
             <MenuItem name="1" :to="{name:'index'}" style="-webkit-app-region: no-drag;">我的网盘</MenuItem>
-            <MenuItem name="2" :to="{name:'listIndex'}" style="-webkit-app-region: no-drag;">传输列表</MenuItem>
+
+            <MenuItem name="2" :to="{name:'listIndex'}" style="-webkit-app-region: no-drag;">
+              传输列表
+              <Badge :count="count"></Badge>
+            </MenuItem>
+
             <MenuItem name="3" :to="{name:'shareSession'}" style="-webkit-app-region: no-drag;">好友分享</MenuItem>
             <MenuItem name="4" :to="{name:'functionList'}" style="-webkit-app-region: no-drag;">功能宝箱</MenuItem>
             <MenuItem name="5" :to="{name:'otherFilm'}" style="-webkit-app-region: no-drag;">更多资源</MenuItem>
             <MenuItem name="6" :to="{name:'fs'}" style="-webkit-app-region: no-drag;">文件管理</MenuItem>
           </div>
           <div class="right">
-            <span @click="loginOut(isLogin) " style="font-size:15px">退出登录</span>
+            <Dropdown trigger="click">
+              <a href="javascript:void(0)" style="font-size:15px;  color: black">
+                登录
+                <Icon type="ios-arrow-down"></Icon>
+              </a>
+              <DropdownMenu slot="list">
+                <DropdownItem>
+                  <span @click="loginOut(isLogin) ">退出登录</span>
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
             <span @click="appSetting">
               <Icon type="ios-settings-outline"/>
             </span>
@@ -106,6 +121,19 @@ export default {
           this.$router.push("/index");
         });
     }
+  },
+  watch: {
+    count: {}
+  },
+  computed: {
+    count() {
+      if (!this.$store.state.upload.count) return 0;
+      else if (this.$store.state.upload.count < 0) {
+        return 0;
+      } else {
+        return this.$store.state.upload.count;
+      }
+    }
   }
 };
 </script>
@@ -116,7 +144,8 @@ export default {
   padding: 0;
   background-color: red;
   -webkit-user-select: none;
-  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif; 
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 }
 
 .layout-logo {
@@ -152,5 +181,34 @@ export default {
 
 .right span:hover {
   color: #e4393c;
+}
+
+.ivu-badge-count {
+  font-family: "Monospaced Number";
+  line-height: 1;
+  vertical-align: middle;
+  position: absolute;
+  -webkit-transform: translateX(50%);
+  -ms-transform: translateX(50%);
+  transform: translateX(50%);
+  top: 0px;
+  right: 0;
+  height: 20px;
+  border-radius: 10px;
+  min-width: 20px;
+  background: #ed4014;
+  border: 1px solid transparent;
+  color: #fff;
+  line-height: 18px;
+  text-align: center;
+  padding: 0 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  -webkit-transform-origin: -10% center;
+  -ms-transform-origin: -10% center;
+  transform-origin: -10% center;
+  z-index: 10;
+  -webkit-box-shadow: 0 0 0 1px #fff;
+  box-shadow: 0 0 0 1px #fff;
 }
 </style>
