@@ -389,7 +389,7 @@ export default {
 .expolrer-main {
   float: left;
   width: 100vw;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 120px);
 }
 
 .expolrer-head-tool{
@@ -403,7 +403,7 @@ export default {
   width: calc(100% - 170px);
   /* margin: 2px auto; */
   /* margin: 0 15px; */
-  height: calc(100vh - 130px);
+  height: calc(100vh - 152px);
   overflow-y: auto;
   position: relative;
 }
