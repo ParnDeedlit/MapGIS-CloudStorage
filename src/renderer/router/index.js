@@ -111,7 +111,7 @@ export default new Router({
         {
             path: '/other', component: Main,
             children: [
-                { path: '/other/film', name: 'otherFilm', components: { menu: ListOther, main: () => import('@/view/other/film') } },
+                { path: '/other/film', name: 'otherFilm', components: { menu: ListOther, main: () => import('@/view/expolrer/index') } },
                 { path: '/other/app', name: 'otherApp', components: { menu: ListOther, main: () => import('@/view/other/app') } },
                 { path: '/other/novel', name: 'otherNovel', components: { menu: ListOther, main: () => import('@/view/other/novel') } }
             ],

@@ -91,6 +91,7 @@ export default {
           }
 
           return (objMessage.uploaded || []).indexOf(chunk.offset + 1) >= 0; */
+          return true;
         },
         headers: {
           //Authorization: Ticket.get() && "Bearer " + Ticket.get().access_token

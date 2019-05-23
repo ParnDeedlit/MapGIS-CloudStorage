@@ -1,0 +1,536 @@
+export const filenav = [{
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}];
+
+export const filelist = [{
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+},{
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+},{
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+},{
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconExe",
+    $size: 100,
+    disk_name: "D盘1",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconPNG",
+    $size: 100,
+    disk_name: "D盘2",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}, {
+    active: false,
+    icon: "iconDOC",
+    $size: 100,
+    disk_name: "D盘3",
+    create_time: "2019-05-24",
+    modify_time: "2019-05-26"
+}];
+
