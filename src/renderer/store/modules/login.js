@@ -21,7 +21,7 @@ const login = {
         let data={};
         let validate=false;
         let userName="guest";
-        let  userRole="user";
+        let  userRole="guest";
         for(let i=0;i<users.length&& !validate;i++){
           let item=users[i];
           if(item.username===info.username && item.password===info.password){
