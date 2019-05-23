@@ -30,7 +30,7 @@ export default new Router({
             ],
             props: { sidebar: true, role: ['admin', 'user'] }
         },
-          {
+        {
             path: '/home', name: '/home', component: Main,
             children: [
                 {
@@ -66,28 +66,38 @@ export default new Router({
                 {
                     path: '/home/share',
                     name: 'share',
-                    components: {menu: HomeMenu, main: () => import('@/view/home/share')}, 
-                    meta:{requireAuth:true}
+                    components: { menu: HomeMenu, main: () => import('@/view/home/share') },
+                    meta: { requireAuth: true }
 
                 },
             ],
             props: { sidebar: true, role: ['admin', 'user'] }
-        }, 
-          {
+        },
+        {
             path: '/list', component: Main,
             children: [
-                { path: '/list/index', name: 'listIndex', components: { menu: ListMenu, main: () => import('@/view/list/index') } },
-                { path: '/list/uploads', name: 'listUploads', components: { menu: ListMenu, main: () => import('@/view/list/uploads') } },
+                {
+                    path: '/list/index',
+                    name: 'listIndex',
+                    components: { menu: ListMenu, main: () => import('@/view/list/index') },
+                    props: { main: { upload: false, download: true } }
+                },
+                {
+                    path: '/list/uploads',
+                    name: 'listUploads',
+                    components: { menu: ListMenu, main: () => import('@/view/list/uploads') },
+                    props: { main: { upload: true, download: false } }
+                },
                 { path: '/list/complete', name: 'listComplete', components: { menu: ListMenu, main: () => import('@/view/list/complete') } },
             ],
             props: { sidebar: true, role: ['admin', 'user'] }
         },
         {
             path: '/share', component: Main,
-            children:[
-                {path: '/share/index', name: 'shareSession', components: {menu: ListShare, main: () => import('@/view/share/index')}},
-                {path: '/share/friend', name: 'shareFriend', components: {menu: ListShare, main: () => import('@/view/share/friend')}, meta:{requireAuth:true}},
-                {path: '/share/group', name: 'shareGroup', components: {menu: ListShare, main: () => import('@/view/share/group')}},
+            children: [
+                { path: '/share/index', name: 'shareSession', components: { menu: ListShare, main: () => import('@/view/share/index') } },
+                { path: '/share/friend', name: 'shareFriend', components: { menu: ListShare, main: () => import('@/view/share/friend') }, meta: { requireAuth: true } },
+                { path: '/share/group', name: 'shareGroup', components: { menu: ListShare, main: () => import('@/view/share/group') } },
             ],
             props: { sidebar: true, role: ['admin', 'user'] }
         },
@@ -106,8 +116,8 @@ export default new Router({
                 { path: '/other/novel', name: 'otherNovel', components: { menu: ListOther, main: () => import('@/view/other/novel') } }
             ],
             props: { sidebar: true, role: ['admin', 'user'] }
-        }, 
-          {
+        },
+        {
             path: '/wenjian',
             component: Main,
             children: [
@@ -115,10 +125,10 @@ export default new Router({
                     path: '/wenjian/fs',
                     name: 'fs',
                     components: {
-                        menu :ListEmpty,
-                        main: ()=>import('@/view/wenjian/fs')
+                        menu: ListEmpty,
+                        main: () => import('@/view/wenjian/fs')
                     },
-                    meta:{requireAuth:true}
+                    meta: { requireAuth: true }
                 },
                 {
                     path: '/wenjian/fs/:id',
@@ -135,5 +145,5 @@ export default new Router({
             path: '*', component: Main,
             children: [{ path: '_', component: () => import('@/view/index') },],
             props: { sidebar: true }
-        } ] 
+        }]
 })

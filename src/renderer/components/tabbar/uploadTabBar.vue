@@ -2,33 +2,22 @@
   <div class="uploadTabBar">
     <ul>
       <li key="upload">
-        <Upload
-          action="http://localhost:8898/upload"
-          name="file"
-          :on-progress="handleProgress"
-          :on-success="handleSuccess"
-          :on-preview="handlePreview"
-          :on-remove="handleRemove"
-        >
-          <i-button type="ghost" icon="ios-cloud-upload-outline">上传文件</i-button>
-        </Upload>
+        <i-button type="primary" @click="uploadFile">上传</i-button>
       </li>
       <li key="upload-multi">
-        <Upload action="http://localhost:8898/upload/1.png">
-          <i-button multiple type="ghost" icon="ios-cloud-upload-outline">批量上传</i-button>
-        </Upload>
+        <i-button multiple icon="ios-cloud-upload-outline">批量上传</i-button>
       </li>
       <li key="download">
-        <i-button size="small" type="ghost" icon="ios-cloud-download-outline">下载</i-button>
+        <i-button size="small" icon="ios-cloud-download-outline">下载</i-button>
       </li>
       <li key="share">
-        <i-button size="small" type="md-share" icon="md-share">分享</i-button>
+        <i-button size="small" icon="md-share">分享</i-button>
       </li>
       <li key="delete">
-        <i-button size="small" type="ghost" icon="ios-trash">删除</i-button>
+        <i-button size="small" icon="ios-trash">删除</i-button>
       </li>
       <li key="new-folder">
-        <i-button size="small" type="ghost" icon="md-add">新建文件夹</i-button>
+        <i-button size="small" icon="md-add">新建文件夹</i-button>
       </li>
     </ul>
   </div>
@@ -37,18 +26,19 @@
 <script>
 export default {
   name: "uploadTabBar",
+  data() {
+    return {};
+  },
   methods: {
-    handleProgress: function(event) {
-      console.log("onProgress", event);
-    },
-    handleSuccess: function(event) {
-      console.log("onSuccess", event);
-    },
-    handlePreview: function(event) {
-      console.log("onPreview", event);
-    },
-    handleRemove: function(event) {
-      console.log("onRemove", event);
+    uploadFile() {
+      //本质上这个点击事件什么都不做，通过这个点击操作==>触发隐藏的全局上传空间的点击事件
+      // 打开文件选择框
+      this.$store.commit("openUploader", {
+        //下面哪怕是空的对象也要传入，主要是electron这个框架会截获vuex的状态导致不更新视图，千万别注释了
+        param: {
+          state: "toggle-click-event" // 传入的参数
+        }
+      });
     }
   }
 };

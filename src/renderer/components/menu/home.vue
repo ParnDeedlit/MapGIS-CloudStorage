@@ -145,11 +145,11 @@ export default {
 
   methods: {
     loadData1(item, callback) {
+      this.$store.state.user.node = item;
       if (item.title == "我的文件") {
         getChildTreeNode(item, this.$store.state.user.role)
           .then(res => {
             callback(res.data);
-            this.$store.state.user.node = item.title;
           })
           .catch(err => {
             console.log("请求失败");
