@@ -1,48 +1,54 @@
 <template>
   <Menu
-    active-name="1"
+    active-name="document"
     theme="light"
-    width="auto"
-    :open-names="['2']"
-    style="background-color:#F9FAFB;width:165px;padding-top:0px; padding-bottom:0px"
+    width="200px"
+    :open-names="['myFile']"
+    style="background-color:#F9FAFB;width:200px;padding-top:0px; padding-bottom:0px"
     :style="{height:menuHeight+'px'}"
   >
-    <MenuItem name="1">
+    <MenuItem name="recycle">
       <Icon type="ios-trash"/>回收站
     </MenuItem>
-    <Submenu name="2">
+    <Submenu name="document">
       <template slot="title">
-        <Icon type="ios-folder"/>我的文档
+        <router-link to="/home/documents">
+          <Icon type="ios-folder"/>我的文档
+        </router-link>
       </template>
-      <MenuItem style="padding-top:0px; padding-bottom:5px">
+
+      <MenuItem name="myFile" style="padding-top:0px; padding-bottom:5px">
         <Tree :data="myfile" :load-data="loadData1"></Tree>
       </MenuItem>
-      <MenuItem style="font-size:13px;padding-top:0px; margin-left:15px; padding-bottom:5px">
+      <MenuItem
+        name="my-secret"
+        style="font-size:13px;padding-top:0px; margin-left:15px; padding-bottom:5px"
+      >
         <Icon type="ios-folder"/>保密箱
       </MenuItem>
     </Submenu>
-    <Submenu name="3">
+    <Submenu name="workspace">
       <template slot="title" style="padding-top:0px; padding-bottom:5px">
         <Icon type="ios-people"/>工作空间
       </template>
-      <MenuItem style="padding-top:0px; padding-bottom:5px">
+      <MenuItem name="download" style="padding-top:0px; padding-bottom:5px">
         <Tree :data="downloadfile" :load-data="loadData2"></Tree>
       </MenuItem>
-      <MenuItem style="padding-top:0px; padding-bottom:5px">
+      <MenuItem name="myData" style="padding-top:0px; padding-bottom:5px">
         <Tree :data="mydata" :load-data="loadData3"></Tree>
       </MenuItem>
-      <MenuItem style="padding-top:0px; padding-bottom:0px">
+      <MenuItem name="shareData" style="padding-top:0px; padding-bottom:0px">
         <Tree :data="sharedata" :load-data="loadData4"></Tree>
       </MenuItem>
     </Submenu>
-    <Submenu name="4">
+    <Submenu name="share">
       <template slot="title">
         <Icon type="md-share"/>共享文件
       </template>
-      <MenuItem style="font-size:13px;padding-top:0px; margin-left:15px; padding-bottom:5px">
+      <MenuItem :to="{name:'myGet'}" name="myGet">
         <Icon type="ios-folder"/>我收到的
       </MenuItem>
-      <MenuItem style="font-size:13px;padding-top:0px; margin-left:15px; padding-bottom:0px">
+      <MenuItem :to="{name:'myShare'}" name="myShare">
         <Icon type="ios-folder"/>我分享的
       </MenuItem>
     </Submenu>
@@ -156,7 +162,7 @@ export default {
           });
       }
     },
-    loadData2(item,callback) {
+    loadData2(item, callback) {
       if (item.title == "下载文件夹") {
         getChildTreeNode(item, this.$store.state.user.role)
           .then(res => {
@@ -167,7 +173,7 @@ export default {
           });
       }
     },
-    loadData3(item,callback) {
+    loadData3(item, callback) {
       if (item.title == "我的数据") {
         getChildTreeNode(item, this.$store.state.user.role)
           .then(res => {
@@ -178,7 +184,7 @@ export default {
           });
       }
     },
-    loadData4(item,callback){
+    loadData4(item, callback) {
       if (item.title == "共享数据") {
         getChildTreeNode(item, this.$store.state.user.role)
           .then(res => {
@@ -187,9 +193,9 @@ export default {
           .catch(err => {
             console.log("请求失败");
           });
-      } 
+      }
     }
-  },     
+  },
   mounted() {
     window.onresize = () => {
       this.menuHeight = parseInt(document.documentElement.clientHeight) - 80;
@@ -198,8 +204,14 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
+a {
+  text-align: 10px;
+}
 </style>
+
+
+
 
 
 

@@ -15,16 +15,16 @@ export function getTreeById(id) {
 }
 export function getChildTreeNode(item, role) {
     if (item.title == "我的文件") {
-        var filepath = path.join("/user/", role, "myfile/tree.json");
+        var filepath = path.join("user", role, "myfile/tree.json");
     }
     if (item.title == "下载文件夹") {
-        var filepath = path.join("/user/", role, "download/tree.json");
+        var filepath = path.join("user", role, "download/tree.json");
     }
     if (item.title == "我的数据") {
-        var filepath = path.join("/user/", role, "mydata/tree.json");
+        var filepath = path.join("user", role, "mydata/tree.json");
     }
     if (item.title == "共享数据") {
-        var filepath = path.join("/user/", role, "sharedata/tree.json");
+        var filepath = path.join("user", role, "sharedata/tree.json");
     }
     return axios.get(filepath);
 }

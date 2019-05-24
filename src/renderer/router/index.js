@@ -34,42 +34,29 @@ export default new Router({
             path: '/home', name: '/home', component: Main,
             children: [
                 {
-                    path: '/home/images',
-                    name: 'images',
+                    path: '/home/recycle',
+                    name: 'myRecycle',
                     components: { menu: HomeMenu, main: () => import('@/view/home/images') }
                 },
                 {
                     path: '/home/documents',
-                    name: 'documents',
+                    name: 'myDocument',
                     components: { menu: HomeMenu, main: () => import('@/view/home/documents') }
                 },
                 {
-                    path: '/home/videos',
-                    name: 'videos',
-                    components: { menu: HomeMenu, main: () => import('@/view/home/videos') }
-                },
-                {
-                    path: '/home/musics',
-                    name: 'musics',
-                    components: { menu: HomeMenu, main: () => import('@/view/home/musics') }
-                },
-                {
-                    path: '/home/seeds',
-                    name: 'seeds',
-                    components: { menu: HomeMenu, main: () => import('@/view/home/seeds') }
-                },
-                {
-                    path: '/home/other',
-                    name: 'other',
-                    components: { menu: HomeMenu, main: () => import('@/view/home/other') }
-                },
-                {
-                    path: '/home/share',
-                    name: 'share',
+                    path: '/home/get',
+                    name: 'myGet',
                     components: { menu: HomeMenu, main: () => import('@/view/home/share') },
                     meta: { requireAuth: true }
 
                 },
+                {
+                    path: '/home/share',
+                    name: 'myShare',
+                    components: { menu: HomeMenu, main: () => import('@/view/home/share') },
+                    meta: { requireAuth: true }
+
+                }
             ],
             props: { sidebar: true, role: ['admin', 'user'] }
         },

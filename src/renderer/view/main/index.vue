@@ -53,7 +53,7 @@
         </Menu>
       </Header>
       <Layout style="margin-top: 16px;-webkit-user-select: none;">
-        <Sider :width="sidebarWith()" style="background-color: #FFFFFF;">
+        <Sider :width="sidebarWith()" class="layout-sider">
           <router-view name="menu" :menuHeight="100"/>
         </Sider>
         <Layout style="background-color: #FFFFFF;">
@@ -80,13 +80,13 @@ export default {
   data() {
     return {
       maximum: false,
-      sidewidth: this.sidebar ? 165 : 0,
+      sidewidth: this.sidebar ? 200 : 0,
       isLogin: true
     };
   },
   methods: {
     sidebarWith() {
-      return this.sidebar ? 165 : 0;
+      return this.sidebar ? 200 : 0;
     },
     appSetting() {
       this.$electron.ipcRenderer.send("setting");
@@ -147,14 +147,14 @@ export default {
 
 .layout-logo {
   width: 150px;
-  height: 30px;
+  height: 40px;
   background: url("../../assets/img/logo.png") no-repeat;
-  background-size: 118px;
+  background-size: 150px;
   border-radius: 3px;
   float: left;
   position: relative;
   top: 15px;
-  left: 10px;
+  left: 15px;
   margin-right: 20px;
 }
 
@@ -162,6 +162,13 @@ export default {
   -webkit-app-region: no-drag;
   width: 600px;
   float: left;
+}
+
+.layout-sider {
+  background-color: #ffffff;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(100vh - 80px);
 }
 
 .right {

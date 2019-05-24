@@ -201,12 +201,12 @@ export default {
 .layout-logo {
   width: 150px;
   height: 30px;
-  background: url("../../assets/img/logo.png") no-repeat;
+  background: url("../../assets/img/mapgis.png") no-repeat;
   background-size: 118px;
   border-radius: 3px;
   float: left;
   position: relative;
-  top: 15px;
+  top: 20px;
   left: 50px;
   margin-right: 20px;
 }
