@@ -1,17 +1,15 @@
 <template>
-    <div>
-        <uploadTabBar></uploadTabBar>
-        <div class="content">
-            <h1>文档</h1>
-        </div>
-    </div>
+  <div>
+    <uploadTabBar></uploadTabBar>
+    <expolrer></expolrer>
+  </div>
 </template>
 
 <script>
-    import uploadTabBar from '@/components/tabbar/uploadTabBar.vue'
-
-    export default {
-        name: "documents",
-        components: {uploadTabBar}
-    }
+import uploadTabBar from "@/components/tabbar/uploadTabBar.vue";
+import expolrer from "@/view/expolrer/index.vue";
+export default {
+  name: "documents",
+  components: { uploadTabBar, expolrer }
+};
 </script>

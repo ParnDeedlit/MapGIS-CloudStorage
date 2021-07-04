@@ -1,21 +1,18 @@
 <template>
-    <div>
-        <uploadTabBar></uploadTabBar>
-        <div class="content">
-            <h1>最近使用1</h1>
-        </div>
-    </div>
+  <div>
+    <uploadTabBar></uploadTabBar>
+    <expolrer></expolrer>
+  </div>
 </template>
 
 <script>
-    import uploadTabBar from '@/components/tabbar/uploadTabBar.vue'
-
-    export default {
-        name: "index",
-        components:{uploadTabBar},
-    }
+import uploadTabBar from "@/components/tabbar/uploadTabBar.vue";
+import expolrer from "@/view/expolrer/index.vue";
+export default {
+  name: "index",
+  components: { uploadTabBar, expolrer }
+};
 </script>
 
 <style scoped>
-
 </style>

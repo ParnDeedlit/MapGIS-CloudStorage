@@ -11,25 +11,19 @@
     <br>
     <br><br>
     <Row type="flex" justify="space-around" class="code-row-bg">
-      <Col span="4" offset="2">
-        <SimpleCard :path="imgPath" :name="imgBackup" />
-      </Col>
-      <Col span="4">
-        <SimpleCard :path="imgPath" :name="imgClean" />
-      </Col>
-      <Col span="4" offset="1">
+      <Col :xs="{ span: 4  }">
         <SimpleCard :path="imgPath" :name="imgBackup" :title="titleName[0].title"  :secTitle="titleName[0].secTitle"/>
       </Col>
-      <Col span="4">
+      <Col :xs="{ span: 4, offset: 1 }">
         <SimpleCard :path="imgPath" :name="imgClean"  :title="titleName[1].title"   :secTitle="titleName[1].secTitle"/>
       </Col>
-      <Col span="4">
+      <Col :xs="{ span: 4, offset: 1 }">
         <SimpleCard :path="imgPath" :name="imgCable"  :title="titleName[2].title"   :secTitle="titleName[2].secTitle"/>
       </Col>
-      <Col span="4">
+      <Col :xs="{ span: 4, offset: 1 }" >
        <SimpleCard :path="imgPath" :name="imgLock"   :title="titleName[3].title"   :secTitle="titleName[3].secTitle"/>
       </Col>
-      <Col span="4">
+      <Col :xs="{ span: 4,offset: 1 }">
         <SimpleCard :path="imgPath" :name="imgRecycle" :title="titleName[4].title"  :secTitle="titleName[4].secTitle"/>
       </Col>
     </Row>

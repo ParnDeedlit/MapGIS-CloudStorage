@@ -23,9 +23,9 @@ ipcMain.on('exitApp', (event) => {
     dialog.showMessageBox(window, {
         type: 'warning',
         title: '退出客户端 ',
-        message: '确定要退出xxx客户端吗?',
+        message: '确定要退出中地云盘吗?',
         cancelId: 0,
-        buttons: ['cancel', 'ok'],
+        buttons: ['取消', '确定'],
         defaultId: 0,
     }, (response) => {
         if (response === 1) {

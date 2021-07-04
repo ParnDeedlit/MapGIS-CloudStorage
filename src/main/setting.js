@@ -1,4 +1,5 @@
 import {nativeImage, Menu, ipcMain, shell, BrowserWindow, webContents} from 'electron';
+import router from '../renderer/router';
 
 function about() {
     const window = BrowserWindow.fromWebContents(webContents.getFocusedWebContents());
@@ -50,7 +51,8 @@ ipcMain.on('setting', (event, data) => {
                 event.sender.send('appUpdate','appUpdate');
             }
         },
-        {label: '问题反馈'},
+
+        {label: '去登陆'},
         {type: 'separator'},
         {
             label: '加入qq群',
